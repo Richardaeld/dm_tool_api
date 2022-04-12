@@ -78,6 +78,7 @@
 // -------------------------------------- I am TEST FILE--------------------------------------
 const express = require('express');
 const Lessons = require('./models/dbfunc')
+const db = require('./models/dbfunc')
 const app = express();
 
 app.use(express.json());
@@ -97,6 +98,17 @@ app.post('/api/lessons', (req, res) => {
             res.status(500).json({message: "I am broken"});
         });
 });
+
+app.post('/api/buttons/addMany', (req, res) => {
+    db.addMany(req.body)
+        .then(diceButtons => {
+            res.status(200).json(diceButtons);
+        })
+        .catch(error => {
+            res.status(500).json({ message: `Unable to upload buttons: ${error}`})
+        })
+});
+
 
 app.get('/api/lessons', (req, res) => {
     Lessons.find()
@@ -156,6 +168,9 @@ app.patch('/api/lessons/:id', (req, res) => {
         res.status(500).json({ messsage: `error updating record: ${error}`})
     })
 });
+
+
+
 
 app.listen(PORT, () => {
     console.log(`server is running on: http://localhost:/${PORT}`)

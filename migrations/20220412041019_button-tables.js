@@ -56,7 +56,7 @@ exports.up = function(knex) {
 
     .createTable('diceButtons', tbl => {
         tbl.increments();
-        tbl.integer('value', 5)
+        tbl.integer('name', 5)
             .notNullable();
         tbl.boolean('open')
             .defaultTo(false);
@@ -72,7 +72,7 @@ exports.down = function(knex) {
   return knex.schema.dropTableIfExists('narrowSuccessButtons')
   .dropTableIfExists('wildMagicButtons')
   .dropTableIfExists('magicItemButtons')
-  .dropTableIdExists('navButtons')
+  .dropTableIfExists('navButtons')
   .dropTableIfExists('spellLevelButtons')
   .dropTableIfExists('diceButtons');
 };

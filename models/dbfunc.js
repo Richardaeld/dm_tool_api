@@ -9,7 +9,8 @@ module.exports = {
     find,
     findById,
     remove,
-    update
+    update,
+    addMany
 }
 
 // add, find, findbyid, delete, update
@@ -19,6 +20,18 @@ async function add (lesson) {
     console.log(id)
     return id
 }
+
+async function addMany (buttons) {
+    const [id] = await db('diceButtons').insert(buttons)
+    return (
+        id,
+        db('diceButtons')
+        .where({id})
+        .first()
+    )
+
+}
+
 
 // get -- find
 function find () {
@@ -47,3 +60,4 @@ function update(id, changes) {
             return findById(id)
         })
 }
+
