@@ -8,8 +8,9 @@ module.exports = {
   development: {
     client: 'sqlite3',
     connection: {
-      filename: './data/dev.sqlite3'
-    }
+      filename: './dev.sqlite3'
+    },
+    useNullAsDefault: true
   },
 
   staging: {
@@ -43,6 +44,5 @@ module.exports = {
       tableName: 'knex_migrations'
     }
   }
-
 
 };
