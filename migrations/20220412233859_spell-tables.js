@@ -25,6 +25,8 @@ exports.up = function(knex) {
         tbl.increments();
         tbl.string('name', 10)
             .notNullable;
+        tbl.integer('value', 1)
+            .notNullable
     })
 
     .createTable('castingTime', tbl => {
@@ -35,10 +37,13 @@ exports.up = function(knex) {
     .createTable('spells', tbl => {
         tbl.increments();
         tbl.string('name', 50)
-        
+            .notNullable;
+        tbl.string('range', 30)
+            .notNullable;
+        tbl.integer('level')
+            .notNullable;
     })
 
-    spell
 };
 
 /**
@@ -46,5 +51,11 @@ exports.up = function(knex) {
  * @returns { Promise<void> }
  */
 exports.down = function(knex) {
-  
+  return knex.schema.dropTableIfExists('magicSchool')
+  .dropTableIfExists('playerClasses')
+  .dropTableIfExists('tags')
+  .dropTableIfExists('level')
+  .dropTableIfExists('castingTime')
+  .dropTableIfExists('spells')
+
 };

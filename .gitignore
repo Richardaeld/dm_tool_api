@@ -32,3 +32,4 @@ python_dump
 node_modules
 /dump
 *.sqlite3
+.env
