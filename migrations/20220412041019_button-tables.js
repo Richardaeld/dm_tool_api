@@ -3,8 +3,7 @@
  * @returns { Promise<void> }
  */
 exports.up = function(knex) {
-    //narrowMiss
-    return knex.schema.createTable('narrowMissButtons', tbl => {
+    return knex.schema.createTable('narrow_miss_buttons', tbl => {
         tbl.increments();
         tbl.text('name', 50)
             .notNullable();
@@ -14,7 +13,7 @@ exports.up = function(knex) {
             .defaultTo(false);
     })
 
-    .createTable('wildMagicButtons', tbl => {
+    .createTable('wild_magic_buttons', tbl => {
         tbl.increments();
         tbl.text('name', 50)
             .notNullable();
@@ -24,7 +23,7 @@ exports.up = function(knex) {
             .defaultTo(false);
     })
 
-    .createTable('magicItemButtons', tbl => {
+    .createTable('magic_item_buttons', tbl => {
         tbl.increments();
         tbl.text('name', 50)
             .notNullable();
@@ -34,7 +33,7 @@ exports.up = function(knex) {
             .defaultTo(false);
     })
 
-    .createTable('navButtons', tbl => {
+    .createTable('nav_buttons', tbl => {
         tbl.increments();
         tbl.text('name', 50)
             .notNullable();
@@ -44,7 +43,7 @@ exports.up = function(knex) {
             .defaultTo(false);
     })
 
-    .createTable('spellLevelButtons', tbl => {
+    .createTable('spell_level_buttons', tbl => {
         tbl.increments();
         tbl.text('name', 50)
             .notNullable();
@@ -54,7 +53,7 @@ exports.up = function(knex) {
             .defaultTo(false)
     })
 
-    .createTable('diceButtons', tbl => {
+    .createTable('dice_buttons', tbl => {
         tbl.increments();
         tbl.integer('name', 5)
             .notNullable();
@@ -69,10 +68,10 @@ exports.up = function(knex) {
  * @returns { Promise<void> }
  */
 exports.down = function(knex) {
-  return knex.schema.dropTableIfExists('narrowSuccessButtons')
-  .dropTableIfExists('wildMagicButtons')
-  .dropTableIfExists('magicItemButtons')
-  .dropTableIfExists('navButtons')
-  .dropTableIfExists('spellLevelButtons')
-  .dropTableIfExists('diceButtons');
+  return knex.schema.dropTableIfExists('narrow_miss_buttons')
+  .dropTableIfExists('wild_magic_buttons')
+  .dropTableIfExists('magic_item_buttons')
+  .dropTableIfExists('nav_buttons')
+  .dropTableIfExists('spell_level_buttons')
+  .dropTableIfExists('dice_buttons');
 };
