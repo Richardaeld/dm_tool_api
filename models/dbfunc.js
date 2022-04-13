@@ -10,7 +10,8 @@ module.exports = {
     findById,
     remove,
     update,
-    addMany
+    addMany,
+    addManySpells
 }
 
 // add, find, findbyid, delete, update
@@ -20,6 +21,17 @@ async function add (lesson) {
     console.log(id)
     return id
 }
+
+async function addManySpells (spells) {
+    const [id] = await db('spells').insert(spells)
+    return (
+        id,
+        db('spells')
+        .where({id})
+        .first()
+    )
+}
+
 
 async function addMany (buttons) {
     const [id] = await db('diceButtons').insert(buttons)
