@@ -11,7 +11,7 @@ const learningRouter = require('../Routes/learningRoutes')
 const spellsRouter = require('../Routes/spellRoutes')
 
 app.get('/', (req, res) => {
-    res.json({message : "I am here"});
+    res.json({message : "Welcome to DM Tool's API!"});
 });
 
 app.use('/api/lessons', learningRouter)

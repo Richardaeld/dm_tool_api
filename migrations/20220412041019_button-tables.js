@@ -3,7 +3,7 @@
  * @returns { Promise<void> }
  */
 exports.up = function(knex) {
-    return knex.schema.createTable('narrow_miss_buttons', tbl => {
+    return knex.schema.createTable('success_at_cost_buttons', tbl => {
         tbl.increments();
         tbl.text('name', 50)
             .notNullable();
@@ -68,7 +68,7 @@ exports.up = function(knex) {
  * @returns { Promise<void> }
  */
 exports.down = function(knex) {
-  return knex.schema.dropTableIfExists('narrow_miss_buttons')
+  return knex.schema.dropTableIfExists('success_at_cost_buttons')
   .dropTableIfExists('wild_magic_buttons')
   .dropTableIfExists('magic_item_buttons')
   .dropTableIfExists('nav_buttons')
