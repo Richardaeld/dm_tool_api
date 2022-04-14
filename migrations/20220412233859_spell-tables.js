@@ -34,8 +34,8 @@ exports.up = function(knex) {
 
     .createTable('spell_classes', tbl => {
         tbl.increments();
-        tbl.string('name', 30)
-        tbl.integer('spell_id')
+        // tbl.string('name', 30)
+        tbl.integer('spell_name')
             .references('spells')
             .inTable('id')
             .onDelete('CASCADE')

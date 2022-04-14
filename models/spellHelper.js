@@ -15,35 +15,6 @@ module.exports = {
 }
 // -----------------------------------DB calls for tags many to many
 
-// async function updateManyToManySpells() {
-
-//     const allSpells = await [db('spells')]
-//     const allClasses = await db('player_class')
-
-
-
-//             // console.log(spell.classes)
-//         // console.log(allClasses)
-//     allSpells.map(spell => {
-//         console.log(spell.name, ">>>>>>>>>>>><<<<<<<>>>>>>>>>>")
-//         // console.log(allSpells)
-//         // console.log(spell.classes, ">>>>>>>>>>>>>>>>>>>>>>")
-//         const spellClasses = spell.classes.split(',')
-
-//         spellClasses.map(spell_class => {
-//             allClasses.map(singleClass => {
-//                 if (singleClass.name.toLowerCase() == spell_class) {
-//                     const dbInsert = {
-//                         spell_id: spell.id,
-//                         class_id:singleClass.id
-//                     }
-//                     console.log(dbInsert)
-//                 }
-//             })
-//         })
-//     })
-// }
-
 
 // -----------------------------------DB calls for class
 function findClasses (id) {
@@ -99,19 +70,6 @@ async function addManySpells (spells) {
         } else {
             spell.level = parseInt(spell.level);
         }
-
-        // console.log(spell.classes)
-        // console.log(allClasses)
-        // spell.classes.map(player_class => {
-        //     allClasses.map(singleClass => {
-        //         if (singleClass.name.toLowerCase() == player_class) {
-        //             const dbInsert = {
-        //                 spell_id: spell.name,
-        //                 class_id:singleClass.id
-        //             }
-        //         }
-        //     })
-        // })
 
         return {...spell}
     })
