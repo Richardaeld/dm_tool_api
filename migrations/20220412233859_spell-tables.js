@@ -9,9 +9,9 @@ exports.up = function(knex) {
             .notNullable;
     })
 
-    .createTable('player_classes', tbl => {
+    .createTable('player_class', tbl => {
         tbl.increments();
-        tbl.string('name', 30)
+        tbl.string('name', 15)
             .notNullable;
     })
 
@@ -25,13 +25,26 @@ exports.up = function(knex) {
         tbl.increments();
         tbl.string('name', 10)
             .notNullable;
-        tbl.integer('value', 1)
-            .notNullable
     })
 
     .createTable('casting_time', tbl => {
         tbl.increments();
         tbl.string('name', 15)
+    })
+
+    .createTable('spell_classes', tbl => {
+        tbl.increments();
+        tbl.string('name', 30)
+        tbl.integer('spell_id')
+            .references('spells')
+            .inTable('id')
+            .onDelete('CASCADE')
+            .onUpdate('CASCADE');
+        tbl.integer('class_id')
+            .references('player_classes')
+            .inTable('id')
+            .onDelete('CASCADE')
+            .onUpdate('CASCADE');
     })
 
     .createTable('spells', tbl => {
@@ -40,11 +53,13 @@ exports.up = function(knex) {
             .notNullable;
         tbl.string('range', 30)
             .notNullable;
+
         tbl.integer('level')
             .references('id')
             .inTable('level')
             .onDelete('CASCADE')
             .onUpdate('CASCADE');
+
         tbl.string('duration', 30)
             .notNullable;
         tbl.string('casting_time', 100)
@@ -76,9 +91,10 @@ exports.up = function(knex) {
  */
 exports.down = function(knex) {
   return knex.schema.dropTableIfExists('magic_school')
-  .dropTableIfExists('player_classes')
+  .dropTableIfExists('player_class')
   .dropTableIfExists('tags')
   .dropTableIfExists('level')
+  .dropTableIfExists('spell_classes')
   .dropTableIfExists('casting_time')
   .dropTableIfExists('spells')
 

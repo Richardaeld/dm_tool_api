@@ -4,15 +4,39 @@ const db = require('../models/spellHelper');
 const router = express.Router();
 
 
-router.get('/', (req, res) => {
-    db.findSpells()
-    .then(spells => {
-        res.status(200).json({ message: `you are in spells with: ${spells.length} spells`, spells });
+
+
+router.get('/test123', (req, res) => {
+    db.updateManyToManySpells()
+})
+
+
+
+
+// -----------------------------------routes for classes
+
+router.get('/classes', (req, res) => {
+    db.findClasses()
+    .then(classes => {
+        res.status(200).json({ message: "These are classes available: ", classes })
     })
     .catch(error => {
-        res.status(500).json({ message: `cannot fetch spells ${error}`})
+        res.status(500).json({ message: `Error retrieving information: ${error}` })
     })
-});
+})
+
+
+router.post('/classes/addMany', (req, res) => {
+    db.addClasses(req.body)
+    .then(classes => {
+        res.status(200).json({ message: `You have added: ${classes.length} classes and they are: ${classes}` })
+    })
+    .catch(error => {
+        res.status(500).json({ message: `There was an error: ${error}` })
+    })
+})
+
+// -----------------------------------routes for levels
 
 
 router.get('/level/:id', (req, res) => {
@@ -45,15 +69,28 @@ router.get('/levels', (req, res) => {
     })
 })
 
-// router.post('/levels/addMany', (req, res) => {
-//     db.addManyLevels()
-//     .then(levels => {
-//         res.status(200).json({ message:`You have added: ${levels.length} levels`, levels })
-//     })
-//     .catch(error => {
-//         res.status(500).json({ message: `something went wrong: ${error}` })
-//     })
-// })
+
+router.post('/levels/addMany', (req, res) => {
+    db.addLevel(req.body)
+    .then(levels => {
+        res.status(200).json({ message:`You have added: ${levels.length} levels`, levels })
+    })
+    .catch(error => {
+        res.status(500).json({ message: `something went wrong: ${error}` })
+    })
+})
+
+// -----------------------------------routes for spells
+
+router.get('/', (req, res) => {
+    db.findSpells()
+    .then(spells => {
+        res.status(200).json({ message: `you are in spells with: ${spells.length} spells`, spells });
+    })
+    .catch(error => {
+        res.status(500).json({ message: `cannot fetch spells ${error}`})
+    })
+});
 
 
 router.post('/addMany', (req, res) => {
