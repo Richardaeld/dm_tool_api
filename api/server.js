@@ -7,14 +7,14 @@ app.use(bodyParser.urlencoded({limit: "50mb", extended:true, parameterLimit: 500
 
 app.use(express.json());
 
-const learningRouter = require('../Routes/learningRoutes')
+// const learningRouter = require('../Routes/learningRoutes')
 const spellsRouter = require('../Routes/spellRoutes')
 
 app.get('/', (req, res) => {
     res.json({message : "Welcome to DM Tool's API!"});
 });
 
-app.use('/api/lessons', learningRouter)
+// app.use('/api/lessons', learningRouter)
 app.use('/api/spells', spellsRouter)
 
 module.exports = app;
