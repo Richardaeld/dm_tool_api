@@ -2,9 +2,9 @@
   "name": "dm_tool_api",
   "version": "1.0.0",
   "description": "",
-  "main": "app/index.js",
+  "main": "./index.js",
   "scripts": {
-    "start": "node app/index.js",
+    "start": "node ./index.js",
     "server": "nodemon index.js"
   },
   "keywords": [],
