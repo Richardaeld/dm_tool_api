@@ -7,8 +7,8 @@ server.use(bodyParser.urlencoded({limit: "50mb", extended:true, parameterLimit: 
 
 server.use(express.json());
 
-const learningRouter = require('../Routes/learningRoutes')
-const spellsRouter = require('../Routes/spellRoutes')
+const learningRouter = require('./Routes/learningRoutes')
+const spellsRouter = require('./Routes/spellRoutes')
 
 server.get('/', (req, res) => {
     res.json({message : "Welcome to DM Tool's API!"});
