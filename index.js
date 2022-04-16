@@ -9,5 +9,5 @@ server.get('/', (req, res) => {
 });
 
 server.listen(5000, () => {
-    console.log(`I am here, on: http//localhost:${PORT}`)
+    console.log(`I am here, on: http://localhost:${PORT}`)
 });
