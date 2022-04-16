@@ -2,12 +2,12 @@ const express = require('express');
 
 const server = express();
 
-const PORT = 5000;
+const port = process.env.PORT;
 
 server.get('/', (req, res) => {
     res.status(200).json({ message: "Welcome to DM Tool" })
 });
 
-server.listen(5000, () => {
-    console.log(`I am here, on: http://localhost:${PORT}`)
+server.listen(port, () => {
+    console.log(`I am here, on: http://localhost:${port}`)
 });
