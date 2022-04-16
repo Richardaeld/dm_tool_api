@@ -2,7 +2,7 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.up = function(knex) {
+ exports.up = function(knex) {
     return knex.schema.createTable('success_at_cost_buttons', tbl => {
         tbl.increments();
         tbl.text('name', 50)
