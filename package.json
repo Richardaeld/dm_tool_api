@@ -19,7 +19,8 @@
   "homepage": "https://github.com/Richardaeld/dm_tool_api#readme",
   "dependencies": {
     "dotenv": "^16.0.0",
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "knex": "^1.0.7"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
