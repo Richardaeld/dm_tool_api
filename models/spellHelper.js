@@ -24,8 +24,12 @@ function findClasses (id) {
 }
 
 async function addClasses (classes) {
-const [id] = await db('player_class').insert(classes)
-return id
+// Original --------------- insert method with SQLite3
+// const [id] = await db('player_class').insert(classes)
+// return id
+
+// PostgreSQL ---------------- insert method
+return await db('player_class').insert(classes, ['id'])
 }
 
 // -----------------------------------DB calls for levels
