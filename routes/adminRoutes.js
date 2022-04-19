@@ -20,7 +20,7 @@ router.post('/register', (req, res) => {
             res.status(200).json(user);
         })
         .catch((error) => {
-            if (error.errno == 19) {
+            if (error.errno == 2067) {
                 res.status(400).json({ message: "Username is already taken"});
             } else {
                 res.status(500).json(error);
