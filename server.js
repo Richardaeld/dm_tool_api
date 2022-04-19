@@ -1,6 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 
+const restricted = require('./auth/restrictedMiddleware')
 const learningRouter = require('./routes/learningRoutes');
 const spellsRouter = require('./routes/spellRoutes');
 const adminRouter = require('./routes/adminRoutes');
@@ -33,9 +34,9 @@ server.get('/', (req, res) => {
     res.json({message : "Welcome to DM Tool's API!"});
 });
 
-server.use('/api/lessons', learningRouter);
-server.use('/api/spells', spellsRouter);
-server.use('/api/admin', adminRouter);
+server.use('/api/lessons', restricted, learningRouter);
+server.use('/api/spells', restricted, spellsRouter);
+server.use('/api/admin', restricted, adminRouter);
 server.use('/api/auth', authRouter);
 
 module.exports = server;
