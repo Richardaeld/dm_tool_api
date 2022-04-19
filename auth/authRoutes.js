@@ -49,3 +49,5 @@ router.post('/login', (req, res) => {
         res.status(500).json("123",error);
     });
 });
+
+module.exports = router;
