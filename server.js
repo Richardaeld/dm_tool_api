@@ -9,6 +9,7 @@ server.use(express.json());
 
 const learningRouter = require('./routes/learningRoutes')
 const spellsRouter = require('./routes/spellRoutes')
+const adminRouter = require('./routes/adminRoutes')
 
 server.get('/', (req, res) => {
     res.json({message : "Welcome to DM Tool's API!"});
@@ -16,5 +17,7 @@ server.get('/', (req, res) => {
 
 server.use('/api/lessons', learningRouter)
 server.use('/api/spells', spellsRouter)
+server.use('/api/admin', adminRouter)
+
 
 module.exports = server;

@@ -1,6 +1,6 @@
 const express = require('express');
 const db = require('../models/adminHelper');
-const bcrypt = require('bcrypt.js');
+const bcrypt = require('bcryptjs');
 
 const router = express.Router();
 
@@ -50,4 +50,4 @@ router.post('/login', (req, res) => {
     });
 });
 
-module.export = router;
+module.exports = router;
