@@ -12,7 +12,7 @@ const sessionConfig = {
         httpOnly: true // No access from JavaScript
     },
     resave: false, // Allows to be resaved each pass
-    saveUnititialized: SAVEUNITITIALIZED, // GDPR laws cookies cannot be saved without client conscient
+    saveUnititialized: process.env.SAVEUNITITIALIZED // GDPR laws cookies cannot be saved without client conscient
 }
 
 var bodyParser = require('body-parser');
