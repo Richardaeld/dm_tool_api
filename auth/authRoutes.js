@@ -1,7 +1,6 @@
 const express = require('express');
 const db = require('../models/adminHelper');
 const bcrypt = require('bcryptjs');
-// const session = require('express-session');
 const generateToken = require('./generateToken')
 
 const router = express.Router();
@@ -41,15 +40,6 @@ router.post('/login', (req, res) => {
     .then((user) => {
         if (user && bcrypt.compareSync(password, user.password)) {
             const token = generateToken(user);
-            // console.log(req.session.user)
-
-            // req.session.user = {
-            //     id: user.id,
-            //     username: user.username
-            // };
-
-            // console.log("--create session--")
-            // console.log(req.session.user)
 
             res.status(200).json({ message: `welcome ${user.username}!`, token});
         } else {
