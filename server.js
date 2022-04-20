@@ -1,32 +1,32 @@
 const express = require('express');
-const session = require('express-session');
+// const session = require('express-session');
 
-const restricted = require('./auth/restrictedMiddleware')
 const learningRouter = require('./routes/learningRoutes');
 const spellsRouter = require('./routes/spellRoutes');
 const adminRouter = require('./routes/adminRoutes');
 const authRouter = require('./auth/authRoutes');
+const restricted = require('./auth/restrictedMiddleware')
 
 const server = express();
 
-const sessionConfig = {
-    name: 'dm_tool', // Name of Cookie
-    secret: process.env.SECRET, // Secret tat makes cookie effective
-    cookie: {
-        maxAge: 1000 * 60 * 60, // Time span of cookie life
-        secure: process.env.COOKIESECURE, // Allows cookie to be valid when created on http(false) or https (true)
-        httpOnly: true // No access from JavaScript
-    },
-    resave: false, // Allows to be resaved each pass
-    saveUnititialized: process.env.SAVEUNITITIALIZED // GDPR laws cookies cannot be saved without client conscient
-};
+// const sessionConfig = {
+//     name: 'dmTool', // Name of Cookie
+//     secret: process.env.SECRET, // Secret tat makes cookie effective
+//     cookie: {
+//         maxAge: 1000 * 60 * 60, // Time span of cookie life
+//         secure: process.env.COOKIESECURE, // Allows cookie to be valid when created on http(false) or https (true)
+//         httpOnly: true // No access from JavaScript
+//     },
+//     resave: false, // Allows to be resaved each pass
+//     saveUnititialized: process.env.SAVEUNITITIALIZED // GDPR laws cookies cannot be saved without client conscient
+// };
 
 var bodyParser = require('body-parser');
 server.use(bodyParser.json({limit: '50mb'}));
 server.use(bodyParser.urlencoded({limit: "50mb", extended:true, parameterLimit: 50000}));
 
 server.use(express.json());
-server.use(session(sessionConfig));
+// server.use(session(sessionConfig));
 
 
 
@@ -34,9 +34,9 @@ server.get('/', (req, res) => {
     res.json({message : "Welcome to DM Tool's API!"});
 });
 
+server.use('/api/auth', authRouter);
 server.use('/api/lessons', restricted, learningRouter);
 server.use('/api/spells', restricted, spellsRouter);
 server.use('/api/admin', restricted, adminRouter);
-server.use('/api/auth', authRouter);
 
 module.exports = server;
