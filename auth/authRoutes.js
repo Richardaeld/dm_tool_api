@@ -2,6 +2,7 @@ const express = require('express');
 const db = require('../models/adminHelper');
 const bcrypt = require('bcryptjs');
 // const session = require('express-session');
+const generateToken = require('./generateToken')
 
 const router = express.Router();
 
@@ -39,7 +40,7 @@ router.post('/login', (req, res) => {
     db.findUserByUsername(username)
     .then((user) => {
         if (user && bcrypt.compareSync(password, user.password)) {
-            // const token = generateToken(user);
+            const token = generateToken(user);
             // console.log(req.session.user)
 
             // req.session.user = {
@@ -48,9 +49,9 @@ router.post('/login', (req, res) => {
             // };
 
             // console.log("--create session--")
-            console.log(req.session.user)
+            // console.log(req.session.user)
 
-            res.status(200).json({ message: `welcome ${user.username}!`});
+            res.status(200).json({ message: `welcome ${user.username}!`, token});
         } else {
             res.status(401).json({ message: "Invalid credentials"});
         }
