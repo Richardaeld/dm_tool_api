@@ -3,12 +3,10 @@ const logger = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
 
-const learningRouter = require('./routes/learningRoutes');
 const spellsRouter = require('./routes/spellRoutes');
 const adminRouter = require('./routes/adminRoutes');
 const authRouter = require('./auth/authRoutes');
 const restricted = require('./auth/restrictedMiddleware')
-
 
 const server = express();
 server.use(helmet());
@@ -27,7 +25,6 @@ server.get('/', (req, res) => {
 });
 
 server.use('/api/auth', authRouter);
-server.use('/api/lessons', restricted, learningRouter);
 server.use('/api/spells', restricted, spellsRouter);
 server.use('/api/admin', restricted, adminRouter);
 
