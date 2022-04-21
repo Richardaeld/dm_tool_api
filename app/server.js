@@ -6,12 +6,13 @@ const cors = require('cors');
 const spellsRouter = require('../routes/spellRoutes');
 const adminRouter = require('../routes/adminRoutes');
 const authRouter = require('../auth/authRoutes');
-const restricted = require('../auth/restrictedMiddleware')
+const diceRouter = require('../routes/diceRoutes');
+const restricted = require('../auth/restrictedMiddleware');
 
 const server = express();
 server.use(helmet());
 server.use(cors());
-server.use(logger('dev'))
+server.use(logger('dev'));
 
 // Allow for larger than normal json submission
 var bodyParser = require('body-parser');
@@ -27,5 +28,6 @@ server.get('/', (req, res) => {
 server.use('/api/auth', authRouter);
 server.use('/api/spells', restricted, spellsRouter);
 server.use('/api/admin', restricted, adminRouter);
+server.use('/api/dice', restricted, diceRouter);
 
 module.exports = server;

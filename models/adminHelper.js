@@ -1,21 +1,20 @@
 const db = require('../dbConfig');
 
+// Has two exports authRoutes AND adminRoutes
 module.exports = {
     addUser,
-    findUserByUsername,
-    // findAllUsers
-    find
+    findUsername,
+    findAll
 }
 
 async function addUser(user) {
     return await db('admin').insert(user, ['id', 'username']);
 }
 
-function findUserByUsername(username) {
+function findUsername(username) {
     return db('admin').where({username}).first();
 }
 
-// function findAllUsers() {
-function find() {
+function findAll() {
     return db('admin')
 }

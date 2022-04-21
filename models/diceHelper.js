@@ -1,9 +1,14 @@
-// const knex = require('knex');
-// const config = require('../knexfile');
-// const db = knex(config.development);
-
 const db = require('../dbConfig');
 
 module.exports = {
+    addDice,
+    findAllDice
+}
 
+async function addDice (dice) {
+    return await db('dice_buttons').insert(dice, ['id'])
+}
+
+function findAllDice () {
+    return db('dice_buttons')
 }
