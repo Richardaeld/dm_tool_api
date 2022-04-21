@@ -45,7 +45,7 @@
 
     .createTable('spell_level_buttons', tbl => {
         tbl.increments();
-        tbl.text('name', 50)
+        tbl.integer('name', 50)
             .notNullable();
         tbl.text('objName', 50)
             .notNullable();
