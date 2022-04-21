@@ -33,22 +33,22 @@
     })
 
     .createTable('spell_classes', tbl => {
-        tbl.increments('id').primary;
+        tbl.increments();
         // tbl.string('name', 30)
         tbl.integer('spell_name')
-            .references('spells')
-            .inTable('id')
+            .references('id')
+            .inTable('spells')
             .onDelete('CASCADE')
             .onUpdate('CASCADE');
         tbl.integer('class_id')
-            .references('player_classes')
-            .inTable('id')
+            .references('id')
+            .inTable('player_classes')
             .onDelete('CASCADE')
             .onUpdate('CASCADE');
     })
 
     .createTable('spells', tbl => {
-        tbl.increments('id').primary();
+        tbl.increments();
         tbl.string('name', 50)
             .notNullable;
         tbl.string('range', 30)
