@@ -42,7 +42,7 @@
             .onUpdate('CASCADE');
         tbl.integer('class_id')
             .references('id')
-            .inTable('player_classes')
+            .inTable('player_class')
             .onDelete('CASCADE')
             .onUpdate('CASCADE');
     })
