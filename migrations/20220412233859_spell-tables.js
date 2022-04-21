@@ -92,10 +92,10 @@
 exports.down = function(knex) {
   return knex.schema.dropTableIfExists('magic_school')
   .dropTableIfExists('spell_classes')
-  .dropTableIfExists('tags')
-  .dropTableIfExists('level')
   .dropTableIfExists('casting_time')
   .dropTableIfExists('player_class')
   .dropTableIfExists('spells')
+  .dropTableIfExists('tags')
+  .dropTableIfExists('level')
 
 };
