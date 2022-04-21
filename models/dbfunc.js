@@ -1,20 +1,20 @@
-const db = require('../dbConfig');
+// const db = require('../dbConfig');
 
 
-module.exports = {
-    addMany
+// module.exports = {
+//     addMany
 
-}
+// }
 
-async function addMany (buttons) {
-    const [id] = await db('diceButtons').insert(buttons)
-    return (
-        id,
-        db('diceButtons')
-        .where({id})
-        .first()
-    )
+// async function addMany (buttons) {
+//     const [id] = await db('diceButtons').insert(buttons)
+//     return (
+//         id,
+//         db('diceButtons')
+//         .where({id})
+//         .first()
+//     )
 
-}
+// }
 
 
