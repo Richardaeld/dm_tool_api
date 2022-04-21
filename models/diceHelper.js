@@ -6,7 +6,7 @@ module.exports = {
 }
 
 async function addDice (dice) {
-    return await db('dice').insert(dice, ['id', 'value'])
+    return await db('dice').insert(dice, ['id', 'name'])
 }
 
 function findAllDice () {
