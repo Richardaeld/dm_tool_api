@@ -33,7 +33,7 @@
     })
 
     .createTable('spell_classes', tbl => {
-        tbl.increments();
+        tbl.increments('id').primary;
         // tbl.string('name', 30)
         tbl.integer('spell_name')
             .references('spells')
@@ -48,7 +48,7 @@
     })
 
     .createTable('spells', tbl => {
-        tbl.increments();
+        tbl.increments('id').primary();
         tbl.string('name', 50)
             .notNullable;
         tbl.string('range', 30)
