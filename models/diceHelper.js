@@ -6,9 +6,9 @@ module.exports = {
 }
 
 async function addDice (dice) {
-    return await db('dice_buttons').insert(dice)
+    return await db('dice').insert(dice)
 }
 
 function findAllDice () {
-    return db('dice_buttons')
+    return db('dice')
 }
