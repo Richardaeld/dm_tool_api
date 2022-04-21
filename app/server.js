@@ -3,10 +3,10 @@ const logger = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
 
-const spellsRouter = require('./routes/spellRoutes');
-const adminRouter = require('./routes/adminRoutes');
-const authRouter = require('./auth/authRoutes');
-const restricted = require('./auth/restrictedMiddleware')
+const spellsRouter = require('../routes/spellRoutes');
+const adminRouter = require('../routes/adminRoutes');
+const authRouter = require('../auth/authRoutes');
+const restricted = require('../auth/restrictedMiddleware')
 
 const server = express();
 server.use(helmet());
