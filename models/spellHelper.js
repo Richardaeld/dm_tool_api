@@ -6,7 +6,8 @@ const db = require('../dbConfig');
 
 module.exports = {
     addManySpells,
-    findSpells,
+    // findSpells,
+    find,
     findLevels,
     findLevel,
     // addManyLevels
@@ -91,6 +92,7 @@ async function addManySpells (spells) {
 }
 
 
-function findSpells () {
+// function findSpells () {
+function find () {
     return db('spells')
 }

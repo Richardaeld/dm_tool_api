@@ -51,7 +51,8 @@ const router = express.Router();
 // });
 
 router.get('/', (req, res) => {
-    db.findAllUsers()
+    // db.findAllUsers()
+    db.find()
     .then((users) => {
         res.status(200).json(users);
     })

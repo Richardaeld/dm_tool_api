@@ -4,14 +4,9 @@ const db = require('../models/spellHelper');
 const router = express.Router();
 
 
-
-
 router.get('/test123', (req, res) => {
     db.updateManyToManySpells()
 })
-
-
-
 
 // -----------------------------------routes for classes
 
@@ -83,7 +78,8 @@ router.post('/levels/addMany', (req, res) => {
 // -----------------------------------routes for spells
 
 router.get('/', (req, res) => {
-    db.findSpells()
+    // db.findSpells()
+    db.find()
     .then(spells => {
         res.status(200).json({ message: `you are in spells with: ${spells.length} spells`, spells });
     })
