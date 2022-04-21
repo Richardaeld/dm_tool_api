@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 });
 
 
-router.get('/addDice', (req, res) => {
+router.post('/addDice', (req, res) => {
     db.addDice(req.body)
     .then((dice) => {
         res.status(200).json(dice);
