@@ -32,21 +32,6 @@
         tbl.string('name', 15)
     })
 
-    .createTable('spell_classes', tbl => {
-        tbl.increments();
-        // tbl.string('name', 30)
-        tbl.integer('spell_name')
-            .references('id')
-            .inTable('spells')
-            .onDelete('CASCADE')
-            .onUpdate('CASCADE');
-        tbl.integer('class_id')
-            .references('id')
-            .inTable('player_class')
-            .onDelete('CASCADE')
-            .onUpdate('CASCADE');
-    })
-
     .createTable('spells', tbl => {
         tbl.increments();
         tbl.string('name', 50)
@@ -81,6 +66,21 @@
         tbl.text('description')
             .notNullable;
         tbl.text('higher_levels')
+    })
+
+    .createTable('spell_classes', tbl => {
+        tbl.increments();
+        // tbl.string('name', 30)
+        tbl.integer('spell_name')
+            .references('id')
+            .inTable('spells')
+            .onDelete('CASCADE')
+            .onUpdate('CASCADE');
+        tbl.integer('class_id')
+            .references('id')
+            .inTable('player_class')
+            .onDelete('CASCADE')
+            .onUpdate('CASCADE');
     })
 
 };
