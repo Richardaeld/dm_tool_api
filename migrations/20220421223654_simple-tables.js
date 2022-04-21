@@ -6,7 +6,7 @@
 exports.up = function(knex) {
     return knex.schema.createTable('dice', tbl => {
         tbl.increments();
-        tbl.integer('value')
+        tbl.integer('name')
             .notNullable;
     })
 };

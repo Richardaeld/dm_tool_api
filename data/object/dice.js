@@ -1,35 +1,74 @@
+//  Dice table
 [
     {
-        "value":2
+        "name":2
     },
     {
-        "value":3
+        "name":3
     },
     {
-        "value":4
+        "name":4
     },
     {
-        "value":6
+        "name":6
     },
     {
-        "value":8
+        "name":8
     },
     {
-        "value":10
+        "name":10
     },
     {
-        "value":12
+        "name":12
     },
     {
-        "value":20
+        "name":20
     },
     {
-        "value":50
+        "name":50
     },
     {
-        "value":100
+        "name":100
     },
     {
-        "value":400
+        "name":400
+    }
+]
+
+// dice buttons
+
+[
+    {
+        "name":2,
+    },
+    {
+        "name":3,
+    },
+    {
+        "name":4,
+    },
+    {
+        "name":6,
+    },
+    {
+        "name":8,
+    },
+    {
+        "name":10,
+    },
+    {
+        "name":12,
+    },
+    {
+        "name":20,
+    },
+    {
+        "name":50,
+    },
+    {
+        "name":100,
+    },
+    {
+        "name":400,
     }
 ]
