@@ -66,10 +66,10 @@ async function addManySpells (spells) {
         }
 
         // Adds spells components into own fields and deletes original field
-        spell.component_material = spell.components.material,
-        spell.component_somatic = spell.components.somatic,
-        spell.component_verbal = spell.components.verbal,
-        spell.component_material_description = spell.components.materials_needed
+        // spell.component_material = spell.components.material,
+        // spell.component_somatic = spell.components.somatic,
+        // spell.component_verbal = spell.components.verbal,
+        // spell.component_material_description = spell.components.materials_needed
         delete spell.components
 
         if(spell.level == 'cantrip') {
