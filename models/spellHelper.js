@@ -75,7 +75,7 @@ async function addManySpells (spells) {
         // delete spell.type // dont need
         // delete spell.school
         // delete spell.classes
-        delete spell.higher_levels
+        // delete spell.higher_levels
 
         if(spell.level == 'cantrip') {
             spell.level = 0
