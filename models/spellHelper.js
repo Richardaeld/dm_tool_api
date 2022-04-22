@@ -90,7 +90,8 @@ async function addManySpells (spells) {
     //     .first()
     // )
 
-    return await db('spells').insert(allSpells, ['id', 'name'])
+    // return await db('spells').insert(allSpells, ['id', 'name'])
+    return await db('spells').insert(allSpells)
 
 }
 
