@@ -35,7 +35,7 @@ router.get('/main/viewAll', (req, res) => {
 });
 
 // ----------------Sub Nav
-router.post('sub/add', (req, res) => {
+router.post('/sub/add', (req, res) => {
     db.addSubNav(req.body)
     .then(buttons => {
         res.status(200).json({ message: `${buttons.length} buttons have been added and they are: ${buttons}` })
@@ -45,7 +45,7 @@ router.post('sub/add', (req, res) => {
     });
 });
 
-router.get('sub/viewAll', (req, res) => {
+router.get('/sub/viewAll', (req, res) => {
     db.viewAllSubNav()
     .then(buttons => {
         res.status(200).json({ message: `${buttons.length} buttons in total and they are: ${buttons}` })
@@ -56,7 +56,7 @@ router.get('sub/viewAll', (req, res) => {
 });
 
 // ----------------Roll Content
-router.post('content/add', (req, res) => {
+router.post('/content/add', (req, res) => {
     db.addRollContent(req.body)
     .then(content => {
         res.status(200).json({ message: `${content.length} entries in total and they are: ${content}` })
@@ -66,7 +66,7 @@ router.post('content/add', (req, res) => {
     });
 });
 
-router.get('content/viewAll', (req, res) => {
+router.get('/content/viewAll', (req, res) => {
     db.viewAllRollContent()
     .then(content => {
         res.status(200).json({ message: `${content.length} entries in total and they are: ${content}` })
