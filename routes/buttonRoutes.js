@@ -75,3 +75,5 @@ router.get('content/viewAll', (req, res) => {
         res.status(200).json({ message: `An error occured: ${error}` })
     });
 });
+
+module.exports = router;
