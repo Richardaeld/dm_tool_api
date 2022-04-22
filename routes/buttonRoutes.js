@@ -34,7 +34,7 @@ router.get('/main/viewAll', (req, res) => {
     });
 });
 
-router.post('/main/viewOne/:id', (req, res) => {
+router.get('/main/viewOne/:id', (req, res) => {
     const { id } = req.params;
 
     db.viewMainNav(id)
