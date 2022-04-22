@@ -7,6 +7,7 @@ const spellsRouter = require('../routes/spellRoutes');
 const adminRouter = require('../routes/adminRoutes');
 const authRouter = require('../auth/authRoutes');
 const diceRouter = require('../routes/diceRoutes');
+const buttonAndContentRouter = require('../routes/buttonRoutes')
 const restricted = require('../auth/restrictedMiddleware');
 
 const server = express();
@@ -29,5 +30,6 @@ server.use('/api/auth', authRouter);
 server.use('/api/spells', restricted, spellsRouter);
 server.use('/api/admin', restricted, adminRouter);
 server.use('/api/dice', restricted, diceRouter);
+server.use('/api/button', restricted, buttonAndContentRouter);
 
 module.exports = server;
