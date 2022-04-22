@@ -45,7 +45,7 @@
             .onDelete('CASCADE')
             .onUpdate('CASCADE');
 
-        tbl.string('duration', 30)
+        tbl.string('duration', 100)
             .notNullable;
         tbl.string('casting_time', 100)
             .notNullable;
@@ -62,7 +62,7 @@
         tbl.string('tags', 100); // redundent
         tbl.string('type', 50); //redundent
         tbl.string('classes', 50)
-        tbl.string('school', 30);
+        tbl.string('school', 100);
         tbl.text('description')
             .notNullable;
         tbl.text('higher_levels')
