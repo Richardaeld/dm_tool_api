@@ -1,64 +1,98 @@
+const { table } = require("console");
+
 /**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
  exports.up = function(knex) {
-    return knex.schema.createTable('success_at_cost_buttons', tbl => {
+    // return knex.schema.createTable('success_at_cost_buttons', tbl => {
+    //     tbl.increments();
+    //     tbl.text('name', 50)
+    //         .notNullable();
+    //     tbl.text('objName', 50)
+    //         .notNullable();
+    //     tbl.boolean('open')
+    //         .defaultTo(false);
+    // })
+
+    // .createTable('wild_magic_buttons', tbl => {
+    //     tbl.increments();
+    //     tbl.text('name', 50)
+    //         .notNullable();
+    //     tbl.text('objName', 50)
+    //         .notNullable();
+    //     tbl.boolean('open')
+    //         .defaultTo(false);
+    // })
+
+    // .createTable('magic_item_buttons', tbl => {
+    //     tbl.increments();
+    //     tbl.text('name', 50)
+    //         .notNullable();
+    //     tbl.text('objName', 50)
+    //         .notNullable();
+    //     tbl.boolean('open')
+    //         .defaultTo(false);
+    // })
+
+    // .createTable('nav_buttons', tbl => {
+    //     tbl.increments();
+    //     tbl.text('name', 50)
+    //         .notNullable();
+    //     tbl.text('objName', 50)
+    //         .notNullable();
+    //     tbl.boolean('open')
+    //         .defaultTo(false);
+    // })
+
+    // .createTable('spell_level_buttons', tbl => {
+    //     tbl.increments();
+    //     tbl.integer('name', 50)
+    //         .notNullable();
+    //     tbl.text('objName', 50)
+    //         .notNullable();
+    //     tbl.boolean('open')
+    //         .defaultTo(false)
+    // })
+
+    // .createTable('dice_buttons', tbl => {
+    //     tbl.increments();
+    //     tbl.integer('name', 5)
+    //         .notNullable();
+    //     tbl.boolean('open')
+    //         .defaultTo(false);
+    // })
+
+    return knex.schema.createTable('main_nav_buttons', tbl => {
         tbl.increments();
-        tbl.text('name', 50)
-            .notNullable();
-        tbl.text('objName', 50)
-            .notNullable();
-        tbl.boolean('open')
-            .defaultTo(false);
+        tbl.string('name', 50)
+            .notNullable;
     })
 
-    .createTable('wild_magic_buttons', tbl => {
+    .createTable('sub_nav_buttons', tbl => {
         tbl.increments();
-        tbl.text('name', 50)
-            .notNullable();
-        tbl.text('objName', 50)
-            .notNullable();
-        tbl.boolean('open')
-            .defaultTo(false);
+        tbl.string('name', 50)
+            .notNullable;
+        tbl.string('obj_name', 50);
+        tbl.integer('main_nav_button')
+            .references('id')
+            .inTable('main_nav_buttons')
+            .onDelete('CASCADE')
+            .onUpdate('CASCADE')
+            .notNullable;
     })
 
-    .createTable('magic_item_buttons', tbl => {
+    .createTable('sub_nav_roll_content', tbl => {
         tbl.increments();
-        tbl.text('name', 50)
-            .notNullable();
-        tbl.text('objName', 50)
-            .notNullable();
-        tbl.boolean('open')
-            .defaultTo(false);
-    })
+        tbl.string('value')
+            .notNullable;
+        tbl.integer('sub_nav_button')
+            .references('id')
+            .inTable('sub_nav_buttons')
+            .onDelete('CASCADE')
+            .onUpdate('CASCADE')
+            .notNullable;
 
-    .createTable('nav_buttons', tbl => {
-        tbl.increments();
-        tbl.text('name', 50)
-            .notNullable();
-        tbl.text('objName', 50)
-            .notNullable();
-        tbl.boolean('open')
-            .defaultTo(false);
-    })
-
-    .createTable('spell_level_buttons', tbl => {
-        tbl.increments();
-        tbl.integer('name', 50)
-            .notNullable();
-        tbl.text('objName', 50)
-            .notNullable();
-        tbl.boolean('open')
-            .defaultTo(false)
-    })
-
-    .createTable('dice_buttons', tbl => {
-        tbl.increments();
-        tbl.integer('name', 5)
-            .notNullable();
-        tbl.boolean('open')
-            .defaultTo(false);
     })
 
 };
@@ -68,10 +102,15 @@
  * @returns { Promise<void> }
  */
 exports.down = function(knex) {
-  return knex.schema.dropTableIfExists('success_at_cost_buttons')
-  .dropTableIfExists('wild_magic_buttons')
-  .dropTableIfExists('magic_item_buttons')
-  .dropTableIfExists('nav_buttons')
-  .dropTableIfExists('spell_level_buttons')
-  .dropTableIfExists('dice_buttons');
+//   return knex.schema.dropTableIfExists('success_at_cost_buttons')
+//   .dropTableIfExists('wild_magic_buttons')
+//   .dropTableIfExists('magic_item_buttons')
+//   .dropTableIfExists('nav_buttons')
+//   .dropTableIfExists('spell_level_buttons')
+//   .dropTableIfExists('dice_buttons');
+
+    return knex.schema.dropTableIfExists('main_nav_buttons')
+        .dropTableIfExists('sub_nav_buttons')
+        .dropTableIfExists('sub_nav_roll_content')
+
 };
