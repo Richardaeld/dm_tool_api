@@ -61,7 +61,7 @@
         tbl.string('component_material_description', 100);
         tbl.string('tags', 100); // redundent
         tbl.string('type', 50); //redundent
-        tbl.string('classes', 50)
+        tbl.string('classes', 100)
         tbl.string('school', 30);
         tbl.text('description')
             .notNullable;
