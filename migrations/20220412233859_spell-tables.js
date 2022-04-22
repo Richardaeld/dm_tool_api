@@ -36,7 +36,7 @@
         tbl.increments();
         tbl.string('name', 50)
             .notNullable;
-        tbl.string('range', 30)
+        tbl.string('range', 100)
             .notNullable;
 
         tbl.integer('level')
