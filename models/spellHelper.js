@@ -55,7 +55,7 @@ async function addLevel (level) {
 
 async function addManySpells (spells) {
     const allClasses = db('player_class')
-    var test = spells.map(spell => {
+    var allSpells = spells.map(spell => {
 
         // Breaks up spell casting into two fields
         if (spell.casting_time.includes(",")) {
@@ -81,14 +81,17 @@ async function addManySpells (spells) {
         return {...spell}
     })
 
-    const [id] = await db('spells').insert(test)
+    // const [id] = await db('spells').insert(allSpells)
 
-    return (
-        id,
-        db('spells')
-        .where({id})
-        .first()
-    )
+    // return (
+    //     id,
+    //     db('spells')
+    //     .where({id})
+    //     .first()
+    // )
+
+    return await db('spells').insert(allSpells, ['id', 'name'])
+
 }
 
 
