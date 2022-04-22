@@ -27,7 +27,10 @@ router.post('/main/add', (req, res) => {
 router.get('/main/viewAll', (req, res) => {
     db.viewAllMainNav()
     .then(buttons => {
-        res.status(200).json({ message: `${buttons.length} buttons in total and they are: ${buttons}` })
+        res.status(200).json({
+            message: `${buttons.length} buttons in total and they are:`,
+            buttons
+        })
     })
     .catch(error => {
         res.status(500).json({ message: `An error occured: ${error}` })
