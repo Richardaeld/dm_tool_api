@@ -15,18 +15,6 @@
             .notNullable;
     })
 
-    .createTable('tags', tbl => {
-        tbl.increments();
-        tbl.string('name', 20)
-            .notNullable;
-    })
-
-    .createTable('level', tbl => {
-        tbl.increments();
-        tbl.string('name', 10)
-            .notNullable;
-    })
-
     .createTable('casting_time', tbl => {
         tbl.increments();
         tbl.string('name', 15)
@@ -38,13 +26,11 @@
             .notNullable;
         tbl.string('range', 100)
             .notNullable;
-
         tbl.integer('level')
             .references('id')
             .inTable('level')
             .onDelete('CASCADE')
             .onUpdate('CASCADE');
-
         tbl.string('duration', 50)
             .notNullable;
         tbl.string('casting_time', 100)
@@ -83,6 +69,20 @@
             .onUpdate('CASCADE');
     })
 
+    // This can be removed
+    // .createTable('tags', tbl => {
+    //     tbl.increments();
+    //     tbl.string('name', 20)
+    //         .notNullable;
+    // })
+
+    // this can be replaced with buttons
+    // .createTable('level', tbl => {
+    //     tbl.increments();
+    //     tbl.string('name', 10)
+    //         .notNullable;
+    // })
+
 };
 
 /**
@@ -95,7 +95,7 @@ exports.down = function(knex) {
   .dropTableIfExists('casting_time')
   .dropTableIfExists('player_class')
   .dropTableIfExists('spells')
-  .dropTableIfExists('tags')
-  .dropTableIfExists('level')
+//   .dropTableIfExists('tags')
+//   .dropTableIfExists('level')
 
 };
