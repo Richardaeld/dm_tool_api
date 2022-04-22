@@ -32,6 +32,6 @@ server.use('/api/spells', restricted, spellsRouter);
 server.use('/api/admin', restricted, adminRouter);
 server.use('/api/dice', restricted, diceRouter);
 server.use('/api/button', buttonAndContentRouter);
-server.use('/api/button/auth', restricted, authButtonAndContentRouter)
+server.use('/api/auth/button', restricted, authButtonAndContentRouter)
 
 module.exports = server;
