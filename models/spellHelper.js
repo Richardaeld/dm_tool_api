@@ -71,11 +71,7 @@ async function addManySpells (spells) {
         // spell.component_verbal = spell.components.verbal,
         // spell.component_material_description = spell.components.materials_needed
         delete spell.components
-        // delete spell.tags // dont need
-        // delete spell.type // dont need
-        // delete spell.school
-        // delete spell.classes
-        // delete spell.higher_levels
+
 
         if(spell.level == 'cantrip') {
             spell.level = 0
