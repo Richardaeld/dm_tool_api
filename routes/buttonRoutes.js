@@ -34,6 +34,22 @@ router.get('/main/viewAll', (req, res) => {
     });
 });
 
+router.post('/main/viewOne/:id', (req, res) => {
+    const { id } = req.params;
+
+    db.viewMainNav(id)
+    .then(button => {
+        if (button) {
+            res.status(200).json({ button })
+        } else {
+            res.status(404).json({ message: "Record was not found" })
+        }
+    })
+    .catch(error => {
+        res.status(500).json({ message: `Unable to preform operation: ${error}` })
+    })
+})
+
 // ----------------Sub Nav
 router.post('/sub/add', (req, res) => {
     db.addSubNav(req.body)

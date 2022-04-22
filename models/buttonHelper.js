@@ -3,7 +3,7 @@ const db = require('../dbConfig');
 module.exports = {
     addMainNav,
     viewAllMainNav,
-    // viewMainNav,
+    viewMainNav,
     addSubNav,
     viewAllSubNav,
     // viewSubNav,
@@ -21,6 +21,10 @@ async function addMainNav(buttons) {
 
 function viewAllMainNav() {
     return db('main_nav_buttons')
+}
+
+function viewMainNav (id) {
+    return db('main_nav_buttons').where({ id }).first();
 }
 
 // ----------------Sub Nav
