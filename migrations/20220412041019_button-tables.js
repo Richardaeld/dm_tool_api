@@ -109,8 +109,8 @@ exports.down = function(knex) {
 //   .dropTableIfExists('spell_level_buttons')
 //   .dropTableIfExists('dice_buttons');
 
-    return knex.schema.dropTableIfExists('main_nav_buttons')
-        .dropTableIfExists('sub_nav_buttons')
-        .dropTableIfExists('sub_nav_roll_content')
+    return knex.schema.dropTableIfExists('sub_nav_roll_content')
+    .dropTableIfExists('sub_nav_buttons')
+    .dropTableIfExists('main_nav_buttons')
 
 };
