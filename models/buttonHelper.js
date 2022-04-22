@@ -6,10 +6,10 @@ module.exports = {
     viewMainNav,
     addSubNav,
     viewAllSubNav,
-    // viewSubNav,
+    viewSubNav,
     addRollContent,
     viewAllRollContent,
-    // viewRollContent
+    viewRollContent
 }
 
 // insert main_nav_buttons sub_nav_buttons sub_nav_roll_content
@@ -36,6 +36,10 @@ function viewAllSubNav() {
     return db('sub_nav_buttons')
 }
 
+function viewSubNav(id) {
+    return db('sub_nav_buttons').where({ id }).first();
+}
+
 // ----------------Roll Content
 async function addRollContent(content) {
     return db('sub_nav_roll_content').insert(content, ['id', 'value'])
@@ -43,4 +47,8 @@ async function addRollContent(content) {
 
 function viewAllRollContent() {
     return db('sub_nav_roll_content')
+}
+
+function viewRollContent(id) {
+    return db('sub_nav_roll_content').where({ id }).first();
 }

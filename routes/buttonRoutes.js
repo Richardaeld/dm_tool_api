@@ -48,7 +48,7 @@ router.get('/main/viewOne/:id', (req, res) => {
         if (button) {
             res.status(200).json({ button })
         } else {
-            res.status(404).json({ message: "Record was not found" })
+            res.status(404).json({ message: 'Record was not found' })
         }
     })
     .catch(error => {
@@ -83,6 +83,22 @@ router.get('/sub/viewAll', (req, res) => {
     });
 });
 
+router.get('sub/viewOne/:id', (req, res) => {
+    const { id } = req.params;
+
+    db.viewSubNav(id)
+    .then(button => {
+        if (button) {
+            res.status(200).json({ button })
+        } else {
+            res.status(404).json({ message: 'Record not found' })
+        }
+    })
+    .catch(error => {
+        res.status(500).json({ message: `Unable to preform operation: ${error}`  })
+    });
+});
+
 // ----------------Roll Content
 router.post('/content/add', (req, res) => {
     db.addRollContent(req.body)
@@ -107,6 +123,22 @@ router.get('/content/viewAll', (req, res) => {
     })
     .then(error => {
         res.status(200).json({ message: `An error occured: ${error}` })
+    });
+});
+
+router.get('/content/viewOne', (req, res) => {
+    const { id } = req.params;
+
+    db.viewRollContent(id)
+    .then(content => {
+        if (content) {
+            res.status(200).json({ content })
+        } else {
+            res.status(404).json({ message: 'Record not found' })
+        }
+    })
+    .catch(error => {
+        res.status(500).json({ message: `Unable to preform operation: ${error}` })
     });
 });
 
