@@ -15,6 +15,11 @@
             .notNullable;
     })
 
+    .createTable('level', tbl => {
+        tbl.increments();
+        tbl.string('name,', 15)
+    })
+
     .createTable('casting_time', tbl => {
         tbl.increments();
         tbl.string('name', 15)
