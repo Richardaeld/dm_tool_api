@@ -99,6 +99,6 @@ exports.down = function(knex) {
   .dropTableIfExists('player_class')
   .dropTableIfExists('spells')
 //   .dropTableIfExists('tags')
-//   .dropTableIfExists('level')
+  .dropTableIfExists('level')
 
 };
