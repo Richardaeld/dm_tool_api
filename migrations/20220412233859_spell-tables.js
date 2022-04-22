@@ -34,7 +34,7 @@
 
     .createTable('spells', tbl => {
         tbl.increments();
-        tbl.string('name', 50)
+        tbl.string('name', 150)
             .notNullable;
         tbl.string('range', 30)
             .notNullable;
