@@ -12,6 +12,8 @@ module.exports = {
     viewRollContent
 }
 
+// Has two exports buttonRoutes AND authButtonRoutes
+
 // insert main_nav_buttons sub_nav_buttons sub_nav_roll_content
 
 // ----------------Main Nav
