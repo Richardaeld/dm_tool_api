@@ -74,9 +74,9 @@ const { table } = require("console");
         tbl.string('name', 50)
             .notNullable;
         tbl.string('obj_name', 50);
-        tbl.integer('main_nav_button')
+        tbl.integer('parent_foreign_key')
             .references('id')
-            .inTable('parent_foreign_key')
+            .inTable('main_nav_buttons')
             .onDelete('CASCADE')
             .onUpdate('CASCADE')
             .notNullable;
@@ -86,9 +86,9 @@ const { table } = require("console");
         tbl.increments();
         tbl.string('value')
             .notNullable;
-        tbl.integer('sub_nav_button')
+        tbl.integer('parent_foreign_key')
             .references('id')
-            .inTable('parent_foreign_Key')
+            .inTable('sub_nav_buttons')
             .onDelete('CASCADE')
             .onUpdate('CASCADE')
             .notNullable;
