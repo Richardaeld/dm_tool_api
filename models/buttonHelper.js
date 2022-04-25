@@ -4,6 +4,7 @@ module.exports = {
     addMainNav,
     viewAllMainNav,
     viewMainNav,
+    viewMainAllChildren,
     addSubNav,
     viewAllSubNav,
     viewSubNav,
@@ -27,6 +28,10 @@ function viewAllMainNav() {
 
 function viewMainNav (id) {
     return db('main_nav_buttons').where({ id }).first();
+}
+
+function viewMainAllChildren (id) {
+    return db('sub_nav_buttons').where({ parent_foreign_key: id })
 }
 
 // ----------------Sub Nav

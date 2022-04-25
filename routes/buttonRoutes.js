@@ -40,6 +40,22 @@ router.get('/main/viewOne/:id', (req, res) => {
     })
 })
 
+router.get('main/viewAll/children/:id', (req, res) => {
+    const { id } = req.params;
+
+    db.viewMainAllChildren(id)
+    .then(button => {
+        if (button) {
+            res.status(200).json({ button })
+        } else {
+            res.status(404).json({ message: 'Record was not found' })
+        }
+    })
+    .catch(error => {
+            res.status(500).json({ message: `Unable to preform operation: ${error}` })
+    })
+})
+
 // ----------------Sub Nav
 router.get('/sub/viewAll', (req, res) => {
     db.viewAllSubNav()
