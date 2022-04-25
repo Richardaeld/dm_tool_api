@@ -76,7 +76,7 @@ const { table } = require("console");
         tbl.string('obj_name', 50);
         tbl.integer('main_nav_button')
             .references('id')
-            .inTable('main_nav_buttons')
+            .inTable('parent_foreign_key')
             .onDelete('CASCADE')
             .onUpdate('CASCADE')
             .notNullable;
@@ -88,7 +88,7 @@ const { table } = require("console");
             .notNullable;
         tbl.integer('sub_nav_button')
             .references('id')
-            .inTable('sub_nav_buttons')
+            .inTable('parent_foreign_Key')
             .onDelete('CASCADE')
             .onUpdate('CASCADE')
             .notNullable;
