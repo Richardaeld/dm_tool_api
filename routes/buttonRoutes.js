@@ -40,7 +40,7 @@ router.get('/main/viewOne/:id', (req, res) => {
     })
 })
 
-router.get('main/viewAll/children/:id', (req, res) => {
+router.get('/main/viewAll/children/:id', (req, res) => {
     const { id } = req.params;
 
     db.viewMainAllChildren(id)

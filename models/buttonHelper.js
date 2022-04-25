@@ -31,7 +31,7 @@ function viewMainNav (id) {
 }
 
 function viewMainAllChildren (id) {
-    return db('sub_nav_buttons')
+    return db('sub_nav_buttons').where({ parent_foreign_key: id })
 }
 
 // ----------------Sub Nav
