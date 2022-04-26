@@ -30,7 +30,7 @@ function viewMainNav (id) {
     return db('main_nav_buttons').where({ id }).first();
 }
 
-function viewMainAllChildren (parent_foreign_key) {
+function viewMainAllChildren (id) {
     // return db('sub_nav_buttons').where({ parent_foreign_key: id })
     // return db('main_nav_buttons')
     // .join('sub_nav_buttons', 'main_nav_buttons.id', 'sub_nav_buttons.parent_foreign_key')
@@ -43,7 +43,7 @@ function viewMainAllChildren (parent_foreign_key) {
         'sub_nav_buttons.name',
         'sub_nav_buttons.parent_foreign_key'
     )
-    .where({ parent_foreign_key })
+    .where({ id })
 }
 
 // ----------------Sub Nav
