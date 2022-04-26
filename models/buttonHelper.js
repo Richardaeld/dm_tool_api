@@ -30,21 +30,19 @@ function viewMainNav (id) {
     return db('main_nav_buttons').where({ id }).first();
 }
 
+// return db('sub_nav_buttons').where({ parent_foreign_key: id })
 function viewMainAllChildren (id) {
-    // return db('sub_nav_buttons').where({ parent_foreign_key: id })
     return db('main_nav_buttons')
     .join('sub_nav_buttons', 'main_nav_buttons.id', '=', 'sub_nav_buttons.parent_foreign_key')
-    // return db('sub_nav_buttons')
-    // .join('main_nav_buttons', 'main_nav_buttons.id', 'sub_nav_buttons.parent_foreign_key')
     .select(
         'man_nav_buttons.id',
         'man_nav_buttons.name',
         'sub_nav_buttons.id',
         'sub_nav_buttons.name',
-        // 'sub_nav_buttons.parent_foreign_key'
-    )
-    .where({ id })
-}
+        )
+        .where({ id })
+    }
+    // 'sub_nav_buttons.parent_foreign_key'
 
 // ----------------Sub Nav
 async function addSubNav(buttons) {
