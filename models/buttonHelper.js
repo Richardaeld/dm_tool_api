@@ -59,6 +59,12 @@ function viewSubNav(id) {
     return db('sub_nav_buttons').where({ id }).first();
 }
 
+function viewSubAllChildren (parent_foreign_key) {
+    return db('sub_nav_buttons')
+    .fullOuterJoin('sub_nav_roll_content', 'sub_nav_buttons.id', 'sub_nav_roll_content.parent_foreign_key')
+    .where({ parent_foreign_key })
+}
+
 // ----------------Roll Content
 async function addRollContent(content) {
     return db('sub_nav_roll_content').insert(content, ['id', 'value'])
