@@ -35,8 +35,8 @@ function viewMainAllChildren (id) {
     return db('main_nav_buttons')
     .join('sub_nav_buttons', 'main_nav_buttons.id', '=', 'sub_nav_buttons.parent_foreign_key')
     .select(
-        'man_nav_buttons.id',
-        'man_nav_buttons.name',
+        'main_nav_buttons.id',
+        'main_nav_buttons.name',
         'sub_nav_buttons.id',
         'sub_nav_buttons.name',
         )
