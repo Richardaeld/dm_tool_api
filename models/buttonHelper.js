@@ -39,6 +39,7 @@ function viewMainAllChildren (parent_foreign_key) {
         'main_nav_buttons.name',
         'sub_nav_buttons.id',
         'sub_nav_buttons.name',
+        'sub_nav_buttons.parent_foreign_key',
         )
         .where({ parent_foreign_key })
     }
