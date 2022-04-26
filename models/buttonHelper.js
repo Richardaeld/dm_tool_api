@@ -33,7 +33,7 @@ function viewMainNav (id) {
 function viewMainAllChildren (id) {
     // return db('sub_nav_buttons').where({ parent_foreign_key: id })
     return db('main_nav_buttons')
-    .join('sub_nav_buttons', 'main_nav_buttons.id', 'sub_nav_buttons.id')
+    .join('sub_nav_buttons', 'main_nav_buttons.id', '=', 'sub_nav_buttons.parent_foreign_key')
     // return db('sub_nav_buttons')
     // .join('main_nav_buttons', 'main_nav_buttons.id', 'sub_nav_buttons.parent_foreign_key')
     .select(
@@ -41,7 +41,7 @@ function viewMainAllChildren (id) {
         'man_nav_buttons.name',
         'sub_nav_buttons.id',
         'sub_nav_buttons.name',
-        'sub_nav_buttons.parent_foreign_key'
+        // 'sub_nav_buttons.parent_foreign_key'
     )
     .where({ id })
 }
