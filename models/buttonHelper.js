@@ -35,7 +35,6 @@ function viewMainAllChildren (parent_foreign_key) {
     return db('main_nav_buttons')
     .fullOuterJoin('sub_nav_buttons', 'main_nav_buttons.id', '=', 'sub_nav_buttons.parent_foreign_key')
 
-        .where({ parent_foreign_key })
     }
     // 'sub_nav_buttons.parent_foreign_key'
 
