@@ -112,7 +112,7 @@ router.get('/content/viewAll', (req, res) => {
         })
     })
     .then(error => {
-        res.status(200).json({ message: `An error occured: ${error}` })
+        res.status(500).json({ message: `An error occured: ${error}` })
     });
 });
 
