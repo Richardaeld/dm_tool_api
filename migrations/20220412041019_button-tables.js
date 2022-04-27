@@ -88,7 +88,7 @@ const { table } = require("console");
         tbl.increments();
         tbl.string('value')
             .notNullable;
-        tbl.integer('parent_foreign_key')
+        tbl.integer('sub_foreign_key')
             .references('id')
             .inTable('sub_nav_buttons')
             .onDelete('CASCADE')

@@ -60,13 +60,13 @@ function viewSubNav(id) {
     return db('sub_nav_buttons').where({ id }).first();
 }
 
-function viewSubAllChildren (parent_foreign_key) {
+function viewSubAllChildren (sub_foreign_key) {
     return db('sub_nav_buttons')
-    .fullOuterJoin('sub_nav_roll_content', 'sub_nav_buttons.id', 'sub_nav_roll_content.parent_foreign_key')
+    .fullOuterJoin('sub_nav_roll_content', 'sub_nav_buttons.id', 'sub_nav_roll_content.sub_foreign_key')
     .select(
         'sub_nav_roll_content.value'
     )
-    .where({ parent_foreign_key: 11 })
+    .where({ sub_foreign_key })
 }
 
 // ----------------Roll Content
