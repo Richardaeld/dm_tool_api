@@ -86,6 +86,22 @@ router.get('sub/viewOne/:id', (req, res) => {
     });
 });
 
+router.get('/sub/viewAll/children/:id', (req,res) => {
+    const { id } = req.params;
+
+    db.viewSubAllChildren(id)
+    .then(button => {
+        if (button) {
+            res.status(200).json({ button })
+        } else {
+            res.status(404).json({ message: 'record not found' })
+        }
+    })
+    .catch(error => {
+        res.status(500).json({ message: `Unable to preform operation: ${error}` })
+    });
+});
+
 // ----------------Roll Content
 router.get('/content/viewAll', (req, res) => {
     db.viewAllRollContent()

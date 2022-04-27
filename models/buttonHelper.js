@@ -8,6 +8,7 @@ module.exports = {
     addSubNav,
     viewAllSubNav,
     viewSubNav,
+    viewSubAllChildren,
     addRollContent,
     viewAllRollContent,
     viewRollContent
