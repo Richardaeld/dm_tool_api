@@ -63,7 +63,10 @@ function viewSubNav(id) {
 function viewSubAllChildren (parent_foreign_key) {
     return db('sub_nav_buttons')
     .fullOuterJoin('sub_nav_roll_content', 'sub_nav_buttons.id', 'sub_nav_roll_content.parent_foreign_key')
-    .where({ parent_foreign_key })
+    .select(
+        'sub_nav_roll_content.value'
+    )
+    .where({ parent_foreign_key: parent_foreign_key })
 }
 
 // ----------------Roll Content
