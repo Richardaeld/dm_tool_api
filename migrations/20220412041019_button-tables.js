@@ -80,6 +80,8 @@ const { table } = require("console");
             .onDelete('CASCADE')
             .onUpdate('CASCADE')
             .notNullable;
+        tbl.boolean('random_roll_only')
+            .defaultTo(false);
     })
 
     .createTable('sub_nav_roll_content', tbl => {
