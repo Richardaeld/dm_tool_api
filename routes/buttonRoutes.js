@@ -111,7 +111,7 @@ router.get('/content/viewAll', (req, res) => {
             content
         })
     })
-    .then(error => {
+    .catch(error => {
         res.status(500).json({ message: `An error occured: ${error}` })
     });
 });
