@@ -8,12 +8,23 @@ module.exports = {
 }
 // -----------------------------------DB calls for Auth
 async function addSpells (allSpells) {
-    return await db('spells').insert(allSpells, ['id', 'name'])
+    return await db('spells')
+        .insert(allSpells, ['id', 'name'])
 }
 
 // -----------------------------------DB calls for Spells
 
-// function findSpells () {
 function findAllSpells () {
-    return db('spells').select('name')
+    return db('spells')
+        .select('name')
+}
+
+function findSpellsByLevel (level) {
+    return db('spells')
+        .where({ level })
+}
+
+function findSpellByName (name) {
+    return db('db')
+        .where({ name })
 }
