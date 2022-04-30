@@ -75,7 +75,7 @@ const { table } = require("console");
             .defaultTo(false);
         tbl.boolean('component_verbal')
             .defaultTo(false);
-        tbl.string('material_description', 200);
+        tbl.string('material_description', 350);
         tbl.string('classes', 100)
             .notNullable;
         tbl.string('school', 30)
