@@ -30,7 +30,7 @@ router.get('/spellsByLevel/:level', (req, res) => {
     });
 });
 
-router.get('/spellByName', (req, res) => {
+router.get('/spellByName/:name', (req, res) => {
     const name = req.params;
 
     db.findSpellByName(name)
