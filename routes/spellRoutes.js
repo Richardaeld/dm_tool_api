@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/spellsByLevel/:level', (req, res) => {
-    const level = req.params;
+    const { level } = req.params;
 
     db.findSpellsByLevel(level)
     .then(spells => {
@@ -31,7 +31,7 @@ router.get('/spellsByLevel/:level', (req, res) => {
 });
 
 router.get('/spellById/:id', (req, res) => {
-    const name = req.params;
+    const { id } = req.params;
 
     db.findSpellByName(id)
     .then(spell => {
