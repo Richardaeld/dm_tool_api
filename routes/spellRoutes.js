@@ -47,15 +47,7 @@ router.get('/spellByName', (req, res) => {
 })
 
 // -----------------------------------routes for auth spells
-router.post('/addSpells', (req, res) => {
-    db.addSpells(req.body)
-        .then(spells => {
-            res.status(200).json(spells);
-        })
-        .catch(error => {
-            res.status(500).json({ message: `unable to upload spells: ${error}` })
-        })
-})
+
 
 
 module.exports = router;
