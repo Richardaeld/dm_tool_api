@@ -5,8 +5,7 @@ const router = express.Router();
 
 // -----------------------------------routes for spells
 router.get('/', (req, res) => {
-    // db.findSpells()
-    db.find()
+    db.findAllSpells()
     .then(spells => {
         res.status(200).json({ message: `you are in spells with: ${spells.length} spells`, spells });
     })
@@ -15,8 +14,8 @@ router.get('/', (req, res) => {
     })
 });
 
-
-router.post('/addMany', (req, res) => {
+// -----------------------------------routes for auth spells
+router.post('/addSpells', (req, res) => {
     db.addSpells(req.body)
         .then(spells => {
             res.status(200).json(spells);
