@@ -20,10 +20,10 @@ function findAllSpells () {
 
 function findSpellsByLevel (level) {
     return db('spells')
-        .where({ level })
+        .where({ level: level })
 }
 
-function findSpellByName (name) {
+function findSpellByName (id) {
     return db('db')
-        .where({ name })
+        .where({ id })
 }

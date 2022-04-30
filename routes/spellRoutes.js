@@ -30,10 +30,10 @@ router.get('/spellsByLevel/:level', (req, res) => {
     });
 });
 
-router.get('/spellByName/:name', (req, res) => {
+router.get('/spellById/:id', (req, res) => {
     const name = req.params;
 
-    db.findSpellByName(name)
+    db.findSpellByName(id)
     .then(spell => {
         if (spell) {
             res.status(200).json({ spell })
