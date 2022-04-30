@@ -55,7 +55,7 @@ router.post('/content/add', (req, res) => {
 });
 
 // ----------------Spells
-router.post('/addSpells', (req, res) => {
+router.post('/content/addSpells', (req, res) => {
     db.addSpells(req.body)
         .then(spells => {
             res.status(200).json(spells);
