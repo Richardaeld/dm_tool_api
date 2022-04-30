@@ -8,8 +8,7 @@ module.exports = {
 }
 // -----------------------------------DB calls for Auth
 async function addSpells (allSpells) {
-    return await db('spells')
-        .insert(allSpells, ['id', 'name'])
+    return await db('spells').insert(allSpells, ['id', 'name'])
 }
 
 // -----------------------------------DB calls for Spells
