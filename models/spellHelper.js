@@ -24,6 +24,6 @@ function findSpellsByLevel (level) {
 }
 
 function findSpellByName (id) {
-    return db('db')
+    return db('spells')
         .where({ id })
 }
