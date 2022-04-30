@@ -24,6 +24,8 @@ const { table } = require("console");
             .notNullable;
         tbl.boolean('random_roll_only')
             .defaultTo(false);
+        tbl.string('child_table', 50)
+            .defaultTo(null);
     })
 
     .createTable('sub_nav_roll_content', tbl => {
@@ -38,8 +40,7 @@ const { table } = require("console");
             .notNullable;
         tbl.boolean('more_content')
             .defaultTo(false)
-        tbl.string('child_table', 50)
-            .defaultTo(null);
+
     })
 
     .createTable('content_nav_button', tbl => {
