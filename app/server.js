@@ -28,7 +28,7 @@ server.get('/', (req, res) => {
 });
 
 server.use('/api/auth', authRouter);
-server.use('/api/spells', restricted, spellsRouter);
+server.use('/api/spells', spellsRouter);
 server.use('/api/admin', restricted, adminRouter);
 server.use('/api/dice', restricted, diceRouter);
 server.use('/api/button', buttonAndContentRouter);
