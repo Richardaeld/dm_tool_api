@@ -38,7 +38,7 @@ router.get('/spellByName', (req, res) => {
         if (spell) {
             res.status(200).json({ spell })
         } else {
-            res.status(404).json({ 'Record not found' })
+            res.status(404).json({ massage: 'Record not found' })
         }
     })
     .catch(error => {
