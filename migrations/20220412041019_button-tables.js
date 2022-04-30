@@ -5,64 +5,6 @@ const { table } = require("console");
  * @returns { Promise<void> }
  */
  exports.up = function(knex) {
-    // return knex.schema.createTable('success_at_cost_buttons', tbl => {
-    //     tbl.increments();
-    //     tbl.text('name', 50)
-    //         .notNullable();
-    //     tbl.text('objName', 50)
-    //         .notNullable();
-    //     tbl.boolean('open')
-    //         .defaultTo(false);
-    // })
-
-    // .createTable('wild_magic_buttons', tbl => {
-    //     tbl.increments();
-    //     tbl.text('name', 50)
-    //         .notNullable();
-    //     tbl.text('objName', 50)
-    //         .notNullable();
-    //     tbl.boolean('open')
-    //         .defaultTo(false);
-    // })
-
-    // .createTable('magic_item_buttons', tbl => {
-    //     tbl.increments();
-    //     tbl.text('name', 50)
-    //         .notNullable();
-    //     tbl.text('objName', 50)
-    //         .notNullable();
-    //     tbl.boolean('open')
-    //         .defaultTo(false);
-    // })
-
-    // .createTable('nav_buttons', tbl => {
-    //     tbl.increments();
-    //     tbl.text('name', 50)
-    //         .notNullable();
-    //     tbl.text('objName', 50)
-    //         .notNullable();
-    //     tbl.boolean('open')
-    //         .defaultTo(false);
-    // })
-
-    // .createTable('spell_level_buttons', tbl => {
-    //     tbl.increments();
-    //     tbl.integer('name', 50)
-    //         .notNullable();
-    //     tbl.text('objName', 50)
-    //         .notNullable();
-    //     tbl.boolean('open')
-    //         .defaultTo(false)
-    // })
-
-    // .createTable('dice_buttons', tbl => {
-    //     tbl.increments();
-    //     tbl.integer('name', 5)
-    //         .notNullable();
-    //     tbl.boolean('open')
-    //         .defaultTo(false);
-    // })
-
     return knex.schema.createTable('main_nav_buttons', tbl => {
         tbl.increments();
         tbl.string('name', 50)
@@ -94,7 +36,53 @@ const { table } = require("console");
             .onDelete('CASCADE')
             .onUpdate('CASCADE')
             .notNullable;
+        tbl.boolean('more_content')
+            .defaultTo(false)
+    })
 
+    .createTable('content_nav_button', tbl => {
+        tbl.increments;
+        tbl.string('name')
+            .notNullable;
+        tbl.integer('content_foreign_key')
+            .references('id')
+            .inTable('sub_nav_roll_content')
+            .onDelete('CASCADE')
+            .onUpdate('CASCADE')
+            .notNullable;
+        tbl.string('child_table_name', 50)
+            .notNullable;
+    })
+
+    .createTable('spells', tbl => {
+        tbl.increments();
+        tbl.string('name', 50)
+            .notNullable;
+        tbl.integer('level', 1)
+            .notNullable;
+        tbl.string('range', 100)
+            .notNullable;
+        tbl.string('duration', 50)
+            .notNullable;
+        tbl.string('casting_time', 100)
+            .notNullable;
+        tbl.string('reaction_condition', 100);
+        tbl.boolean('ritual')
+            .notNullable;
+        tbl.boolean('component_material')
+            .defaultTo(false);
+        tbl.boolean('component_somatic')
+            .defaultTo(false);
+        tbl.boolean('component_verbal')
+            .defaultTo(false);
+        tbl.string('material_description', 100);
+        tbl.string('classes', 100)
+            .notNullable;
+        tbl.string('school', 30)
+            .notNullable;
+        tbl.text('description')
+            .notNullable;
+        tbl.text('higher_levels')
     })
 
 };
@@ -104,14 +92,10 @@ const { table } = require("console");
  * @returns { Promise<void> }
  */
 exports.down = function(knex) {
-//   return knex.schema.dropTableIfExists('success_at_cost_buttons')
-//   .dropTableIfExists('wild_magic_buttons')
-//   .dropTableIfExists('magic_item_buttons')
-//   .dropTableIfExists('nav_buttons')
-//   .dropTableIfExists('spell_level_buttons')
-//   .dropTableIfExists('dice_buttons');
-
-    return knex.schema.dropTableIfExists('sub_nav_roll_content')
+    return knex.schema
+    .dropTableIfExists('spells')
+    .dropTableIfExists('content_nav_button')
+    .dropTableIfExists('sub_nav_roll_content')
     .dropTableIfExists('sub_nav_buttons')
     .dropTableIfExists('main_nav_buttons')
 
