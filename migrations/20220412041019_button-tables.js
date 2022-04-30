@@ -38,6 +38,8 @@ const { table } = require("console");
             .notNullable;
         tbl.boolean('more_content')
             .defaultTo(false)
+        tbl.string('child_table', 50)
+            .defaultTo(null);
     })
 
     .createTable('content_nav_button', tbl => {
