@@ -66,7 +66,7 @@ const { table } = require("console");
             .notNullable;
         tbl.string('casting_time', 100)
             .notNullable;
-        tbl.string('reaction_condition', 100);
+        tbl.string('reaction_condition', 150);
         tbl.boolean('ritual')
             .notNullable;
         tbl.boolean('component_material')
