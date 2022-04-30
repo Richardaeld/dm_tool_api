@@ -90,7 +90,7 @@ router.get('/', (req, res) => {
 
 
 router.post('/addMany', (req, res) => {
-    db.addManySpells(req.body)
+    db.addSpells(req.body)
         .then(spells => {
             res.status(200).json(spells);
         })

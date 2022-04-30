@@ -1,7 +1,7 @@
 const db = require('../dbConfig');
 
 module.exports = {
-    addManySpells,
+    addSpells,
     findSpellsByLevel,
     findSpellByName
 }
@@ -25,7 +25,7 @@ return await db('player_class').insert(classes, ['id'])
 // -----------------------------------DB calls for Spells
 
 
-async function addManySpells (allSpells) {
+async function addSpells (allSpells) {
     return await db('spells').insert(allSpells, ['id', 'name'])
 }
 
