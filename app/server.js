@@ -6,7 +6,6 @@ const cors = require('cors');
 const spellsRouter = require('../routes/spellRoutes');
 const adminRouter = require('../routes/adminRoutes');
 const authRouter = require('../auth/authRoutes');
-const diceRouter = require('../routes/diceRoutes');
 const buttonAndContentRouter = require('../routes/buttonRoutes')
 const authButtonAndContentRouter = require('../routes/authButtonRoutes')
 const restricted = require('../auth/restrictedMiddleware');
@@ -30,7 +29,6 @@ server.get('/', (req, res) => {
 server.use('/api/auth', authRouter);
 server.use('/api/spells', spellsRouter);
 server.use('/api/admin', restricted, adminRouter);
-server.use('/api/dice', restricted, diceRouter);
 server.use('/api/button', buttonAndContentRouter);
 server.use('/api/auth/button', restricted, authButtonAndContentRouter)
 
