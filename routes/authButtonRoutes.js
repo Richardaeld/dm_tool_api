@@ -4,14 +4,8 @@ const spellsDB = require('../models/spellModels')
 
 const router = express.Router();
 
-//  main_nav_buttons sub_nav_buttons sub_nav_roll_content
-// addMainNav,
-
-// addSubNav,
-
-// addRollContent,
-
-// ----------------Main Nav
+// ----------------Nav Names
+// Add array to Nav Names
 router.post('/main/add', (req, res) => {
     db.addMainNav(req.body)
     .then(buttons => {
@@ -26,7 +20,8 @@ router.post('/main/add', (req, res) => {
 });
 
 
-// ----------------Sub Nav
+// ----------------Sub Nav Names
+// Add array to Sub Nav Names
 router.post('/sub/add', (req, res) => {
     db.addSubNav(req.body)
     .then(buttons => {
@@ -41,7 +36,8 @@ router.post('/sub/add', (req, res) => {
 });
 
 
-// ----------------Roll Content
+// ----------------General Content
+// Add array to General Content
 router.post('/content/add', (req, res) => {
     db.addRollContent(req.body)
     .then(content => {
@@ -56,6 +52,7 @@ router.post('/content/add', (req, res) => {
 });
 
 // ----------------Spells
+// Add array to Spells
 router.post('/content/addSpells', (req, res) => {
     spellsDB.addSpells(req.body)
     .then(spells => {

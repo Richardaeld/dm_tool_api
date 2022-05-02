@@ -3,14 +3,8 @@ const db = require('../models/buttonModels');
 
 const router = express.Router();
 
-//  main_nav_buttons sub_nav_buttons sub_nav_roll_content
-// viewAllMainNav,
-// viewMainNav,
-// viewAllSubNav,
-// viewSubNav,
-// viewAllRollContent,
-// viewRollContent
-// ----------------Main Nav
+// ----------------Nav Names
+// View all Nav Names
 router.get('/main/viewAll', (req, res) => {
     db.viewAllMainNav()
     .then(buttons => {
@@ -24,6 +18,7 @@ router.get('/main/viewAll', (req, res) => {
     });
 });
 
+// View one Nav Name by its ID
 router.get('/main/viewOne/:id', (req, res) => {
     const { id } = req.params;
 
@@ -40,6 +35,7 @@ router.get('/main/viewOne/:id', (req, res) => {
     })
 })
 
+// View all children of Nav Name by its ID
 router.get('/main/viewAll/children/:id', (req, res) => {
     const { id } = req.params;
 
@@ -56,7 +52,8 @@ router.get('/main/viewAll/children/:id', (req, res) => {
     })
 })
 
-// ----------------Sub Nav
+// ----------------Sub Nav Names
+// View all Sub Nav Names
 router.get('/sub/viewAll', (req, res) => {
     db.viewAllSubNav()
     .then(buttons => {
@@ -70,6 +67,7 @@ router.get('/sub/viewAll', (req, res) => {
     });
 });
 
+// View one Sub Nav by its ID
 router.get('sub/viewOne/:id', (req, res) => {
     const { id } = req.params;
 
@@ -86,6 +84,7 @@ router.get('sub/viewOne/:id', (req, res) => {
     });
 });
 
+// View all children of Sub Nav by its ID
 router.get('/sub/viewAll/children/:id', (req,res) => {
     const { id } = req.params;
 
@@ -102,7 +101,8 @@ router.get('/sub/viewAll/children/:id', (req,res) => {
     });
 });
 
-// ----------------Roll Content
+// ----------------General Content
+// View all General Content
 router.get('/content/viewAll', (req, res) => {
     db.viewAllRollContent()
     .then(content => {
@@ -116,7 +116,8 @@ router.get('/content/viewAll', (req, res) => {
     });
 });
 
-router.get('/content/viewOne', (req, res) => {
+// View one General Content by its ID
+router.get('/content/viewOne/:id', (req, res) => {
     const { id } = req.params;
 
     db.viewRollContent(id)
@@ -131,5 +132,6 @@ router.get('/content/viewOne', (req, res) => {
         res.status(500).json({ message: `Unable to preform operation: ${error}` })
     });
 });
+
 
 module.exports = router;

@@ -3,7 +3,8 @@ const db = require('../models/spellModels');
 
 const router = express.Router();
 
-// -----------------------------------routes for spells
+// ----------------Spells
+// View all Spells
 router.get('/', (req, res) => {
     db.findAllSpells()
     .then(spells => {
@@ -14,6 +15,7 @@ router.get('/', (req, res) => {
     })
 });
 
+// View all Spells by Level
 router.get('/spellsByLevel/:level', (req, res) => {
     const { level } = req.params;
 
@@ -30,6 +32,7 @@ router.get('/spellsByLevel/:level', (req, res) => {
     });
 });
 
+// View Spell by its ID
 router.get('/spellById/:id', (req, res) => {
     const { id } = req.params;
 
@@ -45,9 +48,6 @@ router.get('/spellById/:id', (req, res) => {
         res.status(500).json({ message: `Unable to preform operation: ${error}` })
     })
 })
-
-// -----------------------------------routes for auth spells
-
 
 
 module.exports = router;

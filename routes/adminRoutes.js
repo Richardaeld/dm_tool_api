@@ -1,10 +1,11 @@
 const express = require('express');
 const db = require('../models/adminModels');
-// const bcrypt = require('bcryptjs');
 // import { v4 as uuidv4 } from 'uuid';
 
 const router = express.Router();
 
+// ---------------- Admin Routes
+// View all Admin
 router.get('/', (req, res) => {
     db.findAll()
     .then((users) => {
@@ -15,6 +16,7 @@ router.get('/', (req, res) => {
     });
 });
 
+// View one admin by username
 router.get('/:username', (req, res) => {
     const { username } = req.params;
     db.findUsername(username)
