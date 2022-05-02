@@ -1,5 +1,5 @@
 const express = require('express');
-const db = require('../models/adminHelper');
+const db = require('../models/adminModels');
 const bcrypt = require('bcryptjs');
 const generateToken = require('./generateToken')
 
