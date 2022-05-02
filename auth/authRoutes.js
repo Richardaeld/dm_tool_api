@@ -5,6 +5,8 @@ const generateToken = require('./generateToken')
 
 const router = express.Router();
 
+// ----------------Auth
+// Add one Admin
 router.post('/register', (req, res) => {
     const credentials = req.body;
     const {username, password } = credentials;
@@ -29,7 +31,7 @@ router.post('/register', (req, res) => {
         });
 });
 
-
+// Login One Admin
 router.post('/login', (req, res) => {
     const { username, password } = req.body;
 
