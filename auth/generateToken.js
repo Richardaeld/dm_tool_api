@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 
 module.exports = user => {
     // need payload, secret, options to create token
-
+    // Creates token
     const payload = {
         id: user.id,
         username: user.username
