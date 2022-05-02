@@ -1,5 +1,5 @@
 const express = require('express');
-const db = require('../models/spellHelper');
+const db = require('../models/spellModels');
 
 const router = express.Router();
 

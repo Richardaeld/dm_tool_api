@@ -1,5 +1,5 @@
 const express = require('express');
-const db = require('../models/buttonHelper');
+const db = require('../models/buttonModels');
 
 const router = express.Router();
 

@@ -1,6 +1,6 @@
 const express = require('express');
-const db = require('../models/buttonHelper');
-const spellsDB = require('../models/spellHelper')
+const db = require('../models/buttonModels');
+const spellsDB = require('../models/spellModels')
 
 const router = express.Router();
 
