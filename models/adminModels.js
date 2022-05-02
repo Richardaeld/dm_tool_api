@@ -7,14 +7,17 @@ module.exports = {
     findAll
 }
 
+// Adds admin
 async function addUser(user) {
     return await db('admin').insert(user, ['id', 'username']);
 }
 
+// Finds one Admin by username
 function findUsername(username) {
     return db('admin').where({username}).first();
 }
 
+// Finds all Admins
 function findAll() {
     return db('admin')
 }
