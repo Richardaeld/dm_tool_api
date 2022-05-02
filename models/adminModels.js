@@ -6,8 +6,8 @@ module.exports = {
     findUsername,
     findAll
 }
-
-// Adds admin
+// ----------------Admin
+// Adds Admin
 async function addUser(user) {
     return await db('admin').insert(user, ['id', 'username']);
 }
