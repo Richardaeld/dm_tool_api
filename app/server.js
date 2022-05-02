@@ -6,8 +6,8 @@ const cors = require('cors');
 const spellsRouter = require('../routes/spellRoutes');
 const adminRouter = require('../routes/adminRoutes');
 const authRouter = require('../auth/authRoutes');
-const buttonAndContentRouter = require('../routes/buttonRoutes')
-const authButtonAndContentRouter = require('../routes/authButtonRoutes')
+const buttonAndContentRouter = require('../routes/buttonRoutes');
+const authButtonAndContentRouter = require('../routes/authButtonRoutes');
 const restricted = require('../auth/restrictedMiddleware');
 
 const server = express();
@@ -30,6 +30,6 @@ server.use('/api/auth', authRouter);
 server.use('/api/spells', spellsRouter);
 server.use('/api/admin', restricted, adminRouter);
 server.use('/api/button', buttonAndContentRouter);
-server.use('/api/auth/button', restricted, authButtonAndContentRouter)
+server.use('/api/auth/button', restricted, authButtonAndContentRouter);
 
 module.exports = server;

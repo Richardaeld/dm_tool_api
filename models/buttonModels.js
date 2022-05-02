@@ -12,19 +12,19 @@ module.exports = {
     addRollContent,
     viewAllRollContent,
     viewRollContent
-}
+};
 
 // Has two exports buttonRoutes AND authButtonRoutes
 
 // ----------------Nav Names
 // Add array to Nav Names
 async function addMainNav(buttons) {
-    return await db('main_nav_buttons').insert(buttons, ['id', 'name'])
+    return await db('main_nav_buttons').insert(buttons, ['id', 'name']);
 }
 
 // View all Nav Names
 function viewAllMainNav() {
-    return db('main_nav_buttons')
+    return db('main_nav_buttons');
 }
 
 // View Nav Name by its ID
@@ -36,18 +36,18 @@ function viewMainNav (id) {
 function viewMainAllChildren (parent_foreign_key) {
     return db('main_nav_buttons')
     .fullOuterJoin('sub_nav_buttons', 'main_nav_buttons.id', 'sub_nav_buttons.parent_foreign_key')
-        .where({ parent_foreign_key })
+        .where({ parent_foreign_key });
     }
 
 // ----------------Sub Nav Names
 // Add array to Sub Nav Names
 async function addSubNav(buttons) {
-    return await db('sub_nav_buttons').insert(buttons, ['id', 'name'])
+    return await db('sub_nav_buttons').insert(buttons, ['id', 'name']);
 }
 
 // View all Sub Nav Names
 function viewAllSubNav() {
-    return db('sub_nav_buttons')
+    return db('sub_nav_buttons');
 }
 
 // View one Sub Nav by its ID
@@ -62,18 +62,18 @@ function viewSubAllChildren (sub_foreign_key) {
     .select(
         'sub_nav_roll_content.value'
     )
-    .where({ sub_foreign_key })
+    .where({ sub_foreign_key });
 }
 
 // ----------------General Content
 // Add array to General Content
 async function addRollContent(content) {
-    return db('sub_nav_roll_content').insert(content, ['id', 'value'])
+    return db('sub_nav_roll_content').insert(content, ['id', 'value']);
 }
 
 // View all General Content
 function viewAllRollContent() {
-    return db('sub_nav_roll_content')
+    return db('sub_nav_roll_content');
 }
 
 // View one General Content by its ID

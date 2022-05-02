@@ -1,7 +1,7 @@
 const express = require('express');
 const db = require('../models/adminModels');
 const bcrypt = require('bcryptjs');
-const generateToken = require('./generateToken')
+const generateToken = require('./generateToken');
 
 const router = express.Router();
 
@@ -36,7 +36,7 @@ router.post('/login', (req, res) => {
     const { username, password } = req.body;
 
     if (!(username && password)) {
-        return res.status(400).json({ message: "Please enter both Username and password" })
+        return res.status(400).json({ message: "Please enter both Username and password" });
     }
 
     db.findUsername(username)

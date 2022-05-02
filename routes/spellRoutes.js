@@ -11,8 +11,8 @@ router.get('/', (req, res) => {
         res.status(200).json({ message: `you are in spells with: ${spells.length} spells`, spells });
     })
     .catch(error => {
-        res.status(500).json({ message: `cannot fetch spells ${error}`})
-    })
+        res.status(500).json({ message: `cannot fetch spells ${error}`});
+    });
 });
 
 // View all Spells by Level
@@ -22,13 +22,13 @@ router.get('/spellsByLevel/:level', (req, res) => {
     db.findSpellsByLevel(level)
     .then(spells => {
         if (spells) {
-            res.status(200).json({ spells })
+            res.status(200).json({ spells });
         } else {
-            res.status(404).json({ message: 'Record not found' })
+            res.status(404).json({ message: 'Record not found' });
         }
     })
     .catch(error => {
-        res.status(500).json({ message: `Unable to preform operation: ${error}` })
+        res.status(500).json({ message: `Unable to preform operation: ${error}` });
     });
 });
 
@@ -39,15 +39,15 @@ router.get('/spellById/:id', (req, res) => {
     db.findSpellById(id)
     .then(spell => {
         if (spell) {
-            res.status(200).json({ spell })
+            res.status(200).json({ spell });
         } else {
-            res.status(404).json({ massage: 'Record not found' })
+            res.status(404).json({ massage: 'Record not found' });
         }
     })
     .catch(error => {
-        res.status(500).json({ message: `Unable to preform operation: ${error}` })
-    })
-})
+        res.status(500).json({ message: `Unable to preform operation: ${error}` });
+    });
+});
 
 
 module.exports = router;

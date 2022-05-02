@@ -5,7 +5,7 @@ module.exports = {
     addUser,
     findUsername,
     findAll
-}
+};
 // ----------------Admin
 // Adds Admin
 async function addUser(user) {
@@ -19,5 +19,5 @@ function findUsername(username) {
 
 // Finds all Admins
 function findAll() {
-    return db('admin')
+    return db('admin');
 }

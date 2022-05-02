@@ -11,10 +11,10 @@ router.get('/main/viewAll', (req, res) => {
         res.status(200).json({
             message: `${buttons.length} buttons in total and they are:`,
             buttons
-        })
+        });
     })
     .catch(error => {
-        res.status(500).json({ message: `An error occured: ${error}` })
+        res.status(500).json({ message: `An error occured: ${error}` });
     });
 });
 
@@ -25,15 +25,15 @@ router.get('/main/viewOne/:id', (req, res) => {
     db.viewMainNav(id)
     .then(button => {
         if (button) {
-            res.status(200).json({ button })
+            res.status(200).json({ button });
         } else {
-            res.status(404).json({ message: 'Record was not found' })
+            res.status(404).json({ message: 'Record was not found' });
         }
     })
     .catch(error => {
-        res.status(500).json({ message: `Unable to preform operation: ${error}` })
-    })
-})
+        res.status(500).json({ message: `Unable to preform operation: ${error}` });
+    });
+});
 
 // View all children of Nav Name by its ID
 router.get('/main/viewAll/children/:id', (req, res) => {
@@ -42,15 +42,15 @@ router.get('/main/viewAll/children/:id', (req, res) => {
     db.viewMainAllChildren(id)
     .then(button => {
         if (button) {
-            res.status(200).json({ button })
+            res.status(200).json({ button });
         } else {
-            res.status(404).json({ message: 'Record was not found' })
+            res.status(404).json({ message: 'Record was not found' });
         }
     })
     .catch(error => {
-            res.status(500).json({ message: `Unable to preform operation: ${error}` })
-    })
-})
+            res.status(500).json({ message: `Unable to preform operation: ${error}` });
+    });
+});
 
 // ----------------Sub Nav Names
 // View all Sub Nav Names
@@ -60,10 +60,10 @@ router.get('/sub/viewAll', (req, res) => {
         res.status(200).json({
             message: `${buttons.length} buttons in total and they are:`,
             buttons
-        })
+        });
     })
     .catch(error => {
-        res.status(500).json({ message: `An error occured: ${error}` })
+        res.status(500).json({ message: `An error occured: ${error}` });
     });
 });
 
@@ -74,13 +74,13 @@ router.get('sub/viewOne/:id', (req, res) => {
     db.viewSubNav(id)
     .then(button => {
         if (button) {
-            res.status(200).json({ button })
+            res.status(200).json({ button });
         } else {
-            res.status(404).json({ message: 'Record not found' })
+            res.status(404).json({ message: 'Record not found' });
         }
     })
     .catch(error => {
-        res.status(500).json({ message: `Unable to preform operation: ${error}`  })
+        res.status(500).json({ message: `Unable to preform operation: ${error}`  });
     });
 });
 
@@ -91,13 +91,13 @@ router.get('/sub/viewAll/children/:id', (req,res) => {
     db.viewSubAllChildren(id)
     .then(button => {
         if (button) {
-            res.status(200).json({ button })
+            res.status(200).json({ button });
         } else {
-            res.status(404).json({ message: 'record not found' })
+            res.status(404).json({ message: 'record not found' });
         }
     })
     .catch(error => {
-        res.status(500).json({ message: `Unable to preform operation: ${error}` })
+        res.status(500).json({ message: `Unable to preform operation: ${error}` });
     });
 });
 
@@ -109,10 +109,10 @@ router.get('/content/viewAll', (req, res) => {
         res.status(200).json({
             message: `${content.length} entries in total and they are:`,
             content
-        })
+        });
     })
     .catch(error => {
-        res.status(500).json({ message: `An error occured: ${error}` })
+        res.status(500).json({ message: `An error occured: ${error}` });
     });
 });
 
@@ -123,13 +123,13 @@ router.get('/content/viewOne/:id', (req, res) => {
     db.viewRollContent(id)
     .then(content => {
         if (content) {
-            res.status(200).json({ content })
+            res.status(200).json({ content });
         } else {
-            res.status(404).json({ message: 'Record not found' })
+            res.status(404).json({ message: 'Record not found' });
         }
     })
     .catch(error => {
-        res.status(500).json({ message: `Unable to preform operation: ${error}` })
+        res.status(500).json({ message: `Unable to preform operation: ${error}` });
     });
 });
 

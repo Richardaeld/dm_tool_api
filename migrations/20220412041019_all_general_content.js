@@ -85,8 +85,8 @@ const { table } = require("console");
             .notNullable;
         tbl.text('description')
             .notNullable;
-        tbl.text('higher_levels')
-    })
+        tbl.text('higher_levels');
+    });
 
 };
 
@@ -100,6 +100,6 @@ exports.down = function(knex) {
     .dropTableIfExists('content_nav_button')
     .dropTableIfExists('sub_nav_roll_content')
     .dropTableIfExists('sub_nav_buttons')
-    .dropTableIfExists('main_nav_buttons')
+    .dropTableIfExists('main_nav_buttons');
 
 };

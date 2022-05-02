@@ -11,7 +11,7 @@ exports.up = function(knex) {
         .index();
     tbl.text('password', 255)
         .notNullable;
-  })
+  });
 };
 
 /**
