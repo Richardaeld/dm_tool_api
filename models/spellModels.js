@@ -4,7 +4,7 @@ module.exports = {
     addSpells,
     findAllSpells,
     findSpellsByLevel,
-    findSpellByName
+    findSpellById
 }
 // ----------------Admin
 // Adds array to Spells
@@ -25,7 +25,7 @@ function findSpellsByLevel (level) {
 }
 
 // View one Spell by its ID
-function findSpellByName (id) {
+function findSpellById (id) {
     return db('spells')
         .where({ id })
 }

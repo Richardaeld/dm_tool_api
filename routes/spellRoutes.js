@@ -36,7 +36,7 @@ router.get('/spellsByLevel/:level', (req, res) => {
 router.get('/spellById/:id', (req, res) => {
     const { id } = req.params;
 
-    db.findSpellByName(id)
+    db.findSpellById(id)
     .then(spell => {
         if (spell) {
             res.status(200).json({ spell })
