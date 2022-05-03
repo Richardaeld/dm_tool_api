@@ -44,10 +44,10 @@ function viewMainAllChildren (parent_foreign_key) {
 function updateMainNav (id, changes) {
     return db('main_nav_buttons')
         .where({ id })
-        .update(changes)
-        .then(() => {
-            return viewMainNav(id);
-        });
+        // .update(changes)
+        // .then(() => {
+        //     return viewMainNav(id);
+        // });
 }
 // ----------------Sub Nav Names
 // Add array to Sub Nav Names
