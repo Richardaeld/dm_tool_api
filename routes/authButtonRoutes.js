@@ -19,6 +19,24 @@ router.post('/main/add', (req, res) => {
     });
 });
 
+// Updates one Nav Name by its ID
+router.patch('/main/patch/:id', (req, res) => {
+    const { id } = req.params;
+    const changes = req.body;
+
+    db.updateMainNav(id, changes)
+    .then(button => {
+        if (button) {
+            res.status(200).json({ button });
+        } else {
+            res.status(404).json({ message: 'Record was not found' });
+        }
+    })
+    .catch(error => {
+        res.status(500).json({ message: `An error occured: ${error}` })
+    });
+});
+
 
 // ----------------Sub Nav Names
 // Add array to Sub Nav Names

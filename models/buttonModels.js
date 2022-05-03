@@ -5,6 +5,7 @@ module.exports = {
     viewAllMainNav,
     viewMainNav,
     viewMainAllChildren,
+    updateMainNav,
     addSubNav,
     viewAllSubNav,
     viewSubNav,
@@ -35,10 +36,16 @@ function viewMainNav (id) {
 // View all children of Nav Name
 function viewMainAllChildren (parent_foreign_key) {
     return db('main_nav_buttons')
-    .fullOuterJoin('sub_nav_buttons', 'main_nav_buttons.id', 'sub_nav_buttons.parent_foreign_key')
+        .fullOuterJoin('sub_nav_buttons', 'main_nav_buttons.id', 'sub_nav_buttons.parent_foreign_key')
         .where({ parent_foreign_key });
     }
 
+// Update single Nav Name by ID
+function updateMainNav (id, changes) {
+    return db('main_nav_buttons')
+        .where({ id })
+        .update(changes, [id])
+}
 // ----------------Sub Nav Names
 // Add array to Sub Nav Names
 async function addSubNav(buttons) {
