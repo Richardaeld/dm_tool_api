@@ -16,7 +16,7 @@ async function addSpells (allSpells) {
 // View all Spells
 function findAllSpells () {
     return db('spells')
-        .select('name');
+        .select('id','name');
 }
 
 // View all Spells of given level (0-9)
