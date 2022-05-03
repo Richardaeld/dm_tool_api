@@ -6,15 +6,18 @@ module.exports = {
     viewMainNav,
     viewMainAllChildren,
     updateMainNav,
+    deleteMainNav,
     addSubNav,
     viewAllSubNav,
     viewSubNav,
     viewSubAllChildren,
     updateSubNav,
+    deleteSubNav,
     addRollContent,
     viewAllRollContent,
     viewRollContent,
-    updateRollContent
+    updateRollContent,
+    deleteRollContent
 };
 
 // Has two exports buttonRoutes AND authButtonRoutes
@@ -51,6 +54,14 @@ function updateMainNav (id, changes) {
             return viewMainNav(id);
         });
 }
+
+// Delete single Nav Name by ID
+function deleteMainNav (id) {
+    return db('main_nav_buttons')
+        .where({ id })
+        .del();
+}
+
 // ----------------Sub Nav Names
 // Add array to Sub Nav Names
 async function addSubNav(buttons) {
@@ -70,21 +81,28 @@ function viewSubNav(id) {
 // View all children of Sub Nav
 function viewSubAllChildren (sub_foreign_key) {
     return db('sub_nav_buttons')
-    .fullOuterJoin('sub_nav_roll_content', 'sub_nav_buttons.id', 'sub_nav_roll_content.sub_foreign_key')
-    .select(
-        'sub_nav_roll_content.value'
-    )
-    .where({ sub_foreign_key });
+        .fullOuterJoin('sub_nav_roll_content', 'sub_nav_buttons.id', 'sub_nav_roll_content.sub_foreign_key')
+        .select(
+            'sub_nav_roll_content.value'
+        )
+        .where({ sub_foreign_key });
 }
 
-// Update single sub nav by ID
+// Update single Sub Nav by ID
 function updateSubNav (id, changes) {
     return db('sub_nav_buttons')
-    .where({ id })
-    .update(changes)
-    .then(() => {
-        return viewSubNav(id);
-    });
+        .where({ id })
+        .update(changes)
+        .then(() => {
+            return viewSubNav(id);
+        });
+}
+
+// Delete single Sub Nav by ID
+function deleteSubNav (id) {
+    return db('sub_nav_buttons')
+        .where({ id })
+        .del();
 }
 
 // ----------------General Content
@@ -103,12 +121,19 @@ function viewRollContent(id) {
     return db('sub_nav_roll_content').where({ id }).first();
 }
 
-// Update single General Content by ID
+// Update single General Content by its ID
 function updateRollContent(id, changes) {
     return db('sub_nav_roll_content')
-    .where({ id })
-    .update(changes)
-    .then(() => {
-        return viewAllRollContent(id);
-    });
+        .where({ id })
+        .update(changes)
+        .then(() => {
+            return viewAllRollContent(id);
+        });
+}
+
+// Delete single General Content by its ID
+function deleteRollContent (id) {
+    return db('sub_nav_roll_content')
+        .where({ id })
+        .del();
 }

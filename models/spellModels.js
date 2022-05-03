@@ -5,7 +5,8 @@ module.exports = {
     findAllSpells,
     findSpellsByLevel,
     findSpellById,
-    updateSpell
+    updateSpell,
+    deleteSpell
 };
 // ----------------Admin
 // Adds array to Spells
@@ -38,5 +39,12 @@ function updateSpell (id, changes) {
         .update(changes)
         .then(() => {
             return findSpellById(id)
-        })
+        });
+}
+
+// Delete one spell by its ID
+function deleteSpell (id) {
+    return db('spells')
+        .where({ id })
+        .del();
 }
