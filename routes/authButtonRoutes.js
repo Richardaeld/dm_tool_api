@@ -33,7 +33,7 @@ router.patch('/main/patch/:id', (req, res) => {
         }
     })
     .catch(error => {
-        res.status(500).json({ message: `An error occured: ${error}` })
+        res.status(500).json({ message: `An123 error occured: ${error}` })
     });
 });
 
