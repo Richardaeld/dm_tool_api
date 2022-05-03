@@ -22,7 +22,7 @@ router.post('/main/add', (req, res) => {
 // Updates one Nav Name by its ID
 router.patch('/main/patch/:id', (req, res) => {
     const { id } = req.params;
-    const { changes } = req.body;
+    const changes = req.body;
 
     db.updateMainNav(id, changes)
     .then(button => {
