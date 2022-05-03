@@ -45,9 +45,9 @@ function updateMainNav (id, changes) {
     return db('main_nav_buttons')
         .where({ id })
         .update(changes)
-        // .then(() => {
-        //     return viewMainNav(id);
-        // });
+        .then(() => {
+            return viewMainNav(id);
+        });
 }
 // ----------------Sub Nav Names
 // Add array to Sub Nav Names
