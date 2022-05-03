@@ -25,9 +25,9 @@ router.patch('/main/patch/:id', (req, res) => {
     const changes = req.body;
 
     db.updateMainNav(id, changes)
-    .then(button => {
+    .then((button) => {
         if (button) {
-            res.status(200).json({ button });
+            res.status(200).json( button );
         } else {
             res.status(404).json({ message: 'Record was not found' });
         }
