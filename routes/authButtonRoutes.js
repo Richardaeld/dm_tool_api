@@ -19,7 +19,8 @@ router.post('/main/add', (req, res) => {
     });
 });
 
-// Updates one Nav Name by its ID
+
+// Update one Nav Name by its ID
 router.patch('/main/patch/:id', (req, res) => {
     const { id } = req.params;
     const changes = req.body;
@@ -33,7 +34,7 @@ router.patch('/main/patch/:id', (req, res) => {
         }
     })
     .catch(error => {
-        res.status(500).json({ message: `An error occured: ${error}` })
+        res.status(500).json({ message: `An error occured: ${error}` });
     });
 });
 
@@ -54,6 +55,24 @@ router.post('/sub/add', (req, res) => {
 });
 
 
+// Update one Sub Nav by its ID
+router.patch('/sub/patch/:id', (req, res) => {
+    const { id } = req.params;
+    const changes = req.body;
+
+    db.updateSubNav(id, changes)
+    .then(button => {
+        if (button) {
+            res.status(200).json( button );
+        } else {
+            res.status(404).json({ message: 'Record not found' });
+        }
+    }).catch(error => {
+        res.status(500).json({ message: `An error occured: ${error}` });
+    });
+});
+
+
 // ----------------General Content
 // Add array to General Content
 router.post('/content/add', (req, res) => {
@@ -69,9 +88,29 @@ router.post('/content/add', (req, res) => {
     });
 });
 
+
+// Update General Content by its ID
+router.patch('/content/patch/:id', (req, res) => {
+    const { id } = req.params;
+    const changes = req.body;
+
+    db.updateRollContent(id, changes)
+    .then(button => {
+        if (button) {
+            res.status(200).json( button );
+        } else {
+            res.status(404).json({ message: 'Record not found' });
+        }
+    })
+    .catch(error => {
+        res.status(500).json({ message: `An error occured: ${error}` });
+    });
+});
+
+
 // ----------------Spells
 // Add array to Spells
-router.post('/content/addSpells', (req, res) => {
+router.post('/content/spells/addSpells', (req, res) => {
     spellsDB.addSpells(req.body)
     .then(spells => {
         res.status(200).json({ spells });
@@ -80,5 +119,25 @@ router.post('/content/addSpells', (req, res) => {
         res.status(500).json({ message: `unable to upload spells: ${error}` });
     });
 });
+
+
+// Update Spell by its ID
+router.patch('/content/spells/patch/:id', (req, res) => {
+    const { id } = req.params;
+    const changes = req.body;
+
+    spellsDB.updateSpell(id, changes)
+    .then(spells => {
+        if (spells) {
+            res.status(200).json(spells);
+        } else {
+            res.status(404).json({ message: 'Record not found' });
+        }
+    })
+    .catch(error => {
+        res.status(500).json({ message: `An error occured: ${error}` });
+    });
+});
+
 
 module.exports = router;

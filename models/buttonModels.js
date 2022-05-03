@@ -10,9 +10,11 @@ module.exports = {
     viewAllSubNav,
     viewSubNav,
     viewSubAllChildren,
+    updateSubNav,
     addRollContent,
     viewAllRollContent,
-    viewRollContent
+    viewRollContent,
+    updateRollContent
 };
 
 // Has two exports buttonRoutes AND authButtonRoutes
@@ -75,6 +77,16 @@ function viewSubAllChildren (sub_foreign_key) {
     .where({ sub_foreign_key });
 }
 
+// Update single sub nav by ID
+function updateSubNav (id, changes) {
+    return db('sub_nav_buttons')
+    .where({ id })
+    .update(changes)
+    .then(() => {
+        return viewSubNav(id);
+    });
+}
+
 // ----------------General Content
 // Add array to General Content
 async function addRollContent(content) {
@@ -89,4 +101,14 @@ function viewAllRollContent() {
 // View one General Content by its ID
 function viewRollContent(id) {
     return db('sub_nav_roll_content').where({ id }).first();
+}
+
+// Update single General Content by ID
+function updateRollContent(id, changes) {
+    return db('sub_nav_roll_content')
+    .where({ id })
+    .update(changes)
+    .then(() => {
+        return viewAllRollContent(id);
+    });
 }
